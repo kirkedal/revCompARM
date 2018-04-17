@@ -1,0 +1,71 @@
+{
+module Lexer
+
+open System
+open Microsoft.FSharp.Text.Lexing
+open System.Text
+
+let keywords (s) =
+     match s with
+       | "if"           -> Parser.IF
+       | "then"         -> Parser.THEN
+       | "else"         -> Parser.ELSE
+       | "fi"           -> Parser.FI
+       | "call"         -> Parser.CALL
+       | "uncall"       -> Parser.UNCALL
+       | "procedure"    -> Parser.PROC
+       | "from"         -> Parser.FROM
+       | "loop"         -> Parser.LOOP
+       | "until"        -> Parser.UNTIL
+       | "main()"       -> Parser.MAIN
+       | "local"        -> Parser.LOCAL
+       | "delocal"      -> Parser.DELOCAL
+       | _              -> Parser.ID (s)
+
+let opr (s) =
+    match s with
+      | "+="            -> Parser.PLUSEQUAL
+      | "-="            -> Parser.MINUSEQUAL
+      | "^="            -> Parser.POWEREQUAL
+      | "<=>"           -> Parser.SWITCH
+
+let op (s) =
+    match s with
+      | "+"             -> Parser.PLUS
+      | "-"             -> Parser.MINUS
+      | "*"             -> Parser.TIMES
+      | "/"             -> Parser.DIVIDE
+      | "%"             -> Parser.MOD
+      | "^"             -> Parser.POWER
+      | "|"             -> Parser.OR
+      | "&"             -> Parser.AND
+      | "!"             -> Parser.NOT
+      | "<"             -> Parser.LESS
+      | ">"             -> Parser.GREATER
+      | "="             -> Parser.EQUAL
+
+let types (s) =
+    match s with
+      | "int"           -> Parser.TYPEINT
+}
+
+let whitespace    = [' ' '\t' '\r']
+let newline       = ['\n' '\012']
+let opReg         = ['+' '-' '*' '/' '%' '^' '|' '&' '<' '>' '=' '!']
+let oprReg        = "+=" | "-=" | "^=" | "<=>"
+let typesReg      = "int"
+let idReg         = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
+let num           = ['0'] | ['1'-'9']['0'-'9']*
+
+rule tokenize = parse
+  | whitespace      { tokenize lexbuf }
+  | newline         { lexbuf.EndPos <- lexbuf.EndPos.NextLine; tokenize lexbuf }
+  | opReg           { op (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
+  | oprReg          { opr (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
+  | typesReg        { types (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
+  | idReg           { keywords (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
+  | num             { Parser.INT( int (Encoding.UTF8.GetString(lexbuf.Lexeme))) }
+  | '('             { Parser.LPAR }
+  | ')'             { Parser.RPAR }
+  | ','             { Parser.COMMA }
+  | eof             { Parser.EOF }

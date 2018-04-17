@@ -1,0 +1,108 @@
+%{
+
+open Microsoft.FSharp.Text.Parsing
+open AbSyn
+
+%}
+
+%token <string> ID
+%token <int> INT
+
+%token TYPEINT
+
+%token PLUSEQUAL MINUSEQUAL POWEREQUAL SWITCH
+%token LESS GREATER EQUAL NOT
+%token PLUS MINUS TIMES DIVIDE MOD POWER
+%token OR AND
+%token LPAR RPAR COMMA
+%token IF THEN ELSE FI
+%token FROM LOOP UNTIL
+%token CALL UNCALL
+%token PROC MAIN
+%token LOCAL DELOCAL
+%token EOF
+
+//start
+%start prog
+%type <AbSyn.Prog> prog
+%type <AbSyn.Proc> proc
+%type <AbSyn.Defmain> defmain
+%type <AbSyn.Def> def
+%type <AbSyn.Def list> defs
+%type <AbSyn.Stmt> stmt
+%type <AbSyn.Exp> exp
+%type <AbSyn.Op_r> opr
+%type <AbSyn.Defvar> defvar
+%type <AbSyn.Defvar list> defvars
+%type <AbSyn.Type> type
+%type <string list> ids
+
+%%
+ids:
+    ID COMMA ids                          { $1 :: $3 }
+  | ID                                    { $1 :: [] }
+
+opr:
+    PLUSEQUAL exp                        { PlusE ($2) }
+  | MINUSEQUAL exp                       { MinusE ($2) }
+  | POWEREQUAL exp                       { PowerE ($2) }
+  | SWITCH exp                           { Switch ($2) }
+
+type:
+  INT                                     {AbSyn.Int}
+
+
+
+prog:
+    defs defmain defs                     { Program ($1, $2, $3) }
+
+defmain:
+    PROC MAIN defvars stmt                { Main ($3, $4) }
+
+def:
+    PROC ID LPAR defvars RPAR stmt        { Define ($2, $4, $6) }
+
+defs:
+    def defs                              { $1 :: $2 }
+  | def                                   { $1 :: [] }
+
+defvar:
+    type ID                               { Dvar ($1, $2) }
+
+defvars:
+    defvar defvars                        { $1 :: $2 }
+  | defvar                                { $1 :: [] }
+
+
+proc:
+    ID LPAR ids RPAR                      { Procedure ($1, $3) }
+
+stmt:
+    CALL proc                             { Call ($2) }
+  | UNCALL proc                           { Uncall ($2) }
+  | IF exp THEN stmt ELSE stmt FI exp     { If ($2, $4, $6, $8) }
+  | FROM exp LOOP stmt UNTIL exp          { From ($2, $4, $6) }
+  | ID opr                                { VarApp ($1, $2) }
+  | LOCAL defvar EQUAL exp stmt DELOCAL defvar EQUAL exp
+                                          { Local ($2, $4, $5, $7, $9) }
+  | stmt stmt                             { Stmts ($1, $2) }
+
+exp:
+    INT                                   { Const ( IntVal ($1)) }
+  | ID                                    { Var ($1) }
+  | exp NOT EQUAL exp                     { NotEq ($1, $4) }
+  | exp PLUS exp                          { Plus ($1, $3) }
+  | exp MINUS exp                         { Minus ($1, $3) }
+  | exp TIMES exp                         { Times ($1, $3) }
+  | exp DIVIDE exp                        { Divide ($1, $3) }
+  | exp MOD exp                           { Mod ($1, $3) }
+  | exp LESS EQUAL exp                    { Leq ($1, $4) }
+  | exp GREATER EQUAL exp                  { Geq ($1, $4) }
+  | exp EQUAL EQUAL exp                   { Equal ($1, $4) }
+  | exp LESS exp                          { Less ($1, $3) }
+  | exp GREATER exp                       { Great ($1, $3) }
+  | exp AND exp                           { And ($1, $3) }
+  | exp OR exp                            { Or ($1, $3) }
+
+
+%%

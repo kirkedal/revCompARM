@@ -1,0 +1,5035 @@
+Output file describing compiled parser placed in Parser.fs and Parser.fsi
+------------------------
+states = 
+state 0:
+  items:
+    _startprog ->  . prog
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   shift 21
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto prog: 1
+    goto def: 27
+    goto defs: 14
+
+state 1:
+  items:
+    _startprog -> prog . 
+
+  actions:
+    action 'EOF' (noprec):   accept
+    action 'LOCAL' (noprec):   accept
+    action 'DELOCAL' (noprec):   accept
+    action 'PROC' (noprec):   accept
+    action 'MAIN' (noprec):   accept
+    action 'CALL' (noprec):   accept
+    action 'UNCALL' (noprec):   accept
+    action 'FROM' (noprec):   accept
+    action 'LOOP' (noprec):   accept
+    action 'UNTIL' (noprec):   accept
+    action 'IF' (noprec):   accept
+    action 'THEN' (noprec):   accept
+    action 'ELSE' (noprec):   accept
+    action 'FI' (noprec):   accept
+    action 'LPAR' (noprec):   accept
+    action 'RPAR' (noprec):   accept
+    action 'COMMA' (noprec):   accept
+    action 'OR' (noprec):   accept
+    action 'AND' (noprec):   accept
+    action 'PLUS' (noprec):   accept
+    action 'MINUS' (noprec):   accept
+    action 'TIMES' (noprec):   accept
+    action 'DIVIDE' (noprec):   accept
+    action 'MOD' (noprec):   accept
+    action 'POWER' (noprec):   accept
+    action 'LESS' (noprec):   accept
+    action 'GREATER' (noprec):   accept
+    action 'EQUAL' (noprec):   accept
+    action 'NOT' (noprec):   accept
+    action 'PLUSEQUAL' (noprec):   accept
+    action 'MINUSEQUAL' (noprec):   accept
+    action 'POWEREQUAL' (noprec):   accept
+    action 'SWITCH' (noprec):   accept
+    action 'TYPEINT' (noprec):   accept
+    action 'INT' (noprec):   accept
+    action 'ID' (noprec):   accept
+    action 'error' (noprec):   accept
+    action '#' (noprec):   accept
+    action '$$' (noprec):   accept
+
+  immediate action:   accept
+ gotos:
+
+state 2:
+  items:
+    ids -> 'ID' . 'COMMA' ids
+    ids -> 'ID' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce ids --> 'ID'
+    action 'LOCAL' (noprec):   reduce ids --> 'ID'
+    action 'DELOCAL' (noprec):   reduce ids --> 'ID'
+    action 'PROC' (noprec):   reduce ids --> 'ID'
+    action 'MAIN' (noprec):   reduce ids --> 'ID'
+    action 'CALL' (noprec):   reduce ids --> 'ID'
+    action 'UNCALL' (noprec):   reduce ids --> 'ID'
+    action 'FROM' (noprec):   reduce ids --> 'ID'
+    action 'LOOP' (noprec):   reduce ids --> 'ID'
+    action 'UNTIL' (noprec):   reduce ids --> 'ID'
+    action 'IF' (noprec):   reduce ids --> 'ID'
+    action 'THEN' (noprec):   reduce ids --> 'ID'
+    action 'ELSE' (noprec):   reduce ids --> 'ID'
+    action 'FI' (noprec):   reduce ids --> 'ID'
+    action 'LPAR' (noprec):   reduce ids --> 'ID'
+    action 'RPAR' (noprec):   reduce ids --> 'ID'
+    action 'COMMA' (noprec):   shift 3
+    action 'OR' (noprec):   reduce ids --> 'ID'
+    action 'AND' (noprec):   reduce ids --> 'ID'
+    action 'PLUS' (noprec):   reduce ids --> 'ID'
+    action 'MINUS' (noprec):   reduce ids --> 'ID'
+    action 'TIMES' (noprec):   reduce ids --> 'ID'
+    action 'DIVIDE' (noprec):   reduce ids --> 'ID'
+    action 'MOD' (noprec):   reduce ids --> 'ID'
+    action 'POWER' (noprec):   reduce ids --> 'ID'
+    action 'LESS' (noprec):   reduce ids --> 'ID'
+    action 'GREATER' (noprec):   reduce ids --> 'ID'
+    action 'EQUAL' (noprec):   reduce ids --> 'ID'
+    action 'NOT' (noprec):   reduce ids --> 'ID'
+    action 'PLUSEQUAL' (noprec):   reduce ids --> 'ID'
+    action 'MINUSEQUAL' (noprec):   reduce ids --> 'ID'
+    action 'POWEREQUAL' (noprec):   reduce ids --> 'ID'
+    action 'SWITCH' (noprec):   reduce ids --> 'ID'
+    action 'TYPEINT' (noprec):   reduce ids --> 'ID'
+    action 'INT' (noprec):   reduce ids --> 'ID'
+    action 'ID' (noprec):   reduce ids --> 'ID'
+    action 'error' (noprec):   reduce ids --> 'ID'
+    action '#' (noprec):   reduce ids --> 'ID'
+    action '$$' (noprec):   reduce ids --> 'ID'
+
+  immediate action: <none>
+ gotos:
+
+state 3:
+  items:
+    ids -> 'ID' 'COMMA' . ids
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 2
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto ids: 4
+
+state 4:
+  items:
+    ids -> 'ID' 'COMMA' ids . 
+
+  actions:
+    action 'EOF' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'LOCAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'DELOCAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'PROC' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'MAIN' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'CALL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'UNCALL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'FROM' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'LOOP' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'UNTIL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'IF' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'THEN' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'ELSE' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'FI' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'LPAR' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'RPAR' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'COMMA' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'OR' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'AND' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'PLUS' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'MINUS' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'TIMES' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'DIVIDE' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'MOD' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'POWER' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'LESS' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'GREATER' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'EQUAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'NOT' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'PLUSEQUAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'MINUSEQUAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'POWEREQUAL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'SWITCH' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'TYPEINT' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'INT' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'ID' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'error' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action '#' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action '$$' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+
+  immediate action:   reduce ids --> 'ID' 'COMMA' ids
+ gotos:
+
+state 5:
+  items:
+    opr -> 'PLUSEQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 6
+
+state 6:
+  items:
+    opr -> 'PLUSEQUAL' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'LOCAL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'DELOCAL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'PROC' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'MAIN' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'CALL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'UNCALL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'FROM' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'LOOP' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'UNTIL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'IF' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'THEN' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'ELSE' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'FI' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'LPAR' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'RPAR' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'COMMA' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'SWITCH' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'TYPEINT' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'INT' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'ID' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action 'error' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action '#' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+    action '$$' (noprec):   reduce opr --> 'PLUSEQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 7:
+  items:
+    opr -> 'MINUSEQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 8
+
+state 8:
+  items:
+    opr -> 'MINUSEQUAL' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'LOCAL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'DELOCAL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'PROC' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'MAIN' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'CALL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'UNCALL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'FROM' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'LOOP' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'UNTIL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'IF' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'THEN' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'ELSE' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'FI' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'LPAR' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'RPAR' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'COMMA' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'SWITCH' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'TYPEINT' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'INT' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'ID' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action 'error' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action '#' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+    action '$$' (noprec):   reduce opr --> 'MINUSEQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 9:
+  items:
+    opr -> 'POWEREQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 10
+
+state 10:
+  items:
+    opr -> 'POWEREQUAL' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'LOCAL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'DELOCAL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'PROC' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'MAIN' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'CALL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'UNCALL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'FROM' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'LOOP' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'UNTIL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'IF' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'THEN' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'ELSE' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'FI' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'LPAR' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'RPAR' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'COMMA' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'SWITCH' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'TYPEINT' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'INT' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'ID' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action 'error' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action '#' (noprec):   reduce opr --> 'POWEREQUAL' exp
+    action '$$' (noprec):   reduce opr --> 'POWEREQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 11:
+  items:
+    opr -> 'SWITCH' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 12
+
+state 12:
+  items:
+    opr -> 'SWITCH' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'LOCAL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'DELOCAL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'PROC' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'MAIN' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'CALL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'UNCALL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'FROM' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'LOOP' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'UNTIL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'IF' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'THEN' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'ELSE' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'FI' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'LPAR' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'RPAR' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'COMMA' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'MINUSEQUAL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'POWEREQUAL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'SWITCH' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'TYPEINT' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'INT' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'ID' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'error' (noprec):   reduce opr --> 'SWITCH' exp
+    action '#' (noprec):   reduce opr --> 'SWITCH' exp
+    action '$$' (noprec):   reduce opr --> 'SWITCH' exp
+
+  immediate action: <none>
+ gotos:
+
+state 13:
+  items:
+    type -> 'INT' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce type --> 'INT'
+    action 'LOCAL' (noprec):   reduce type --> 'INT'
+    action 'DELOCAL' (noprec):   reduce type --> 'INT'
+    action 'PROC' (noprec):   reduce type --> 'INT'
+    action 'MAIN' (noprec):   reduce type --> 'INT'
+    action 'CALL' (noprec):   reduce type --> 'INT'
+    action 'UNCALL' (noprec):   reduce type --> 'INT'
+    action 'FROM' (noprec):   reduce type --> 'INT'
+    action 'LOOP' (noprec):   reduce type --> 'INT'
+    action 'UNTIL' (noprec):   reduce type --> 'INT'
+    action 'IF' (noprec):   reduce type --> 'INT'
+    action 'THEN' (noprec):   reduce type --> 'INT'
+    action 'ELSE' (noprec):   reduce type --> 'INT'
+    action 'FI' (noprec):   reduce type --> 'INT'
+    action 'LPAR' (noprec):   reduce type --> 'INT'
+    action 'RPAR' (noprec):   reduce type --> 'INT'
+    action 'COMMA' (noprec):   reduce type --> 'INT'
+    action 'OR' (noprec):   reduce type --> 'INT'
+    action 'AND' (noprec):   reduce type --> 'INT'
+    action 'PLUS' (noprec):   reduce type --> 'INT'
+    action 'MINUS' (noprec):   reduce type --> 'INT'
+    action 'TIMES' (noprec):   reduce type --> 'INT'
+    action 'DIVIDE' (noprec):   reduce type --> 'INT'
+    action 'MOD' (noprec):   reduce type --> 'INT'
+    action 'POWER' (noprec):   reduce type --> 'INT'
+    action 'LESS' (noprec):   reduce type --> 'INT'
+    action 'GREATER' (noprec):   reduce type --> 'INT'
+    action 'EQUAL' (noprec):   reduce type --> 'INT'
+    action 'NOT' (noprec):   reduce type --> 'INT'
+    action 'PLUSEQUAL' (noprec):   reduce type --> 'INT'
+    action 'MINUSEQUAL' (noprec):   reduce type --> 'INT'
+    action 'POWEREQUAL' (noprec):   reduce type --> 'INT'
+    action 'SWITCH' (noprec):   reduce type --> 'INT'
+    action 'TYPEINT' (noprec):   reduce type --> 'INT'
+    action 'INT' (noprec):   reduce type --> 'INT'
+    action 'ID' (noprec):   reduce type --> 'INT'
+    action 'error' (noprec):   reduce type --> 'INT'
+    action '#' (noprec):   reduce type --> 'INT'
+    action '$$' (noprec):   reduce type --> 'INT'
+
+  immediate action:   reduce type --> 'INT'
+ gotos:
+
+state 14:
+  items:
+    prog -> defs . defmain defs
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   shift 17
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto defmain: 15
+
+state 15:
+  items:
+    prog -> defs defmain . defs
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   shift 21
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto def: 27
+    goto defs: 16
+
+state 16:
+  items:
+    prog -> defs defmain defs . 
+
+  actions:
+    action 'EOF' (noprec):   reduce prog --> defs defmain defs
+    action 'LOCAL' (noprec):   reduce prog --> defs defmain defs
+    action 'DELOCAL' (noprec):   reduce prog --> defs defmain defs
+    action 'PROC' (noprec):   reduce prog --> defs defmain defs
+    action 'MAIN' (noprec):   reduce prog --> defs defmain defs
+    action 'CALL' (noprec):   reduce prog --> defs defmain defs
+    action 'UNCALL' (noprec):   reduce prog --> defs defmain defs
+    action 'FROM' (noprec):   reduce prog --> defs defmain defs
+    action 'LOOP' (noprec):   reduce prog --> defs defmain defs
+    action 'UNTIL' (noprec):   reduce prog --> defs defmain defs
+    action 'IF' (noprec):   reduce prog --> defs defmain defs
+    action 'THEN' (noprec):   reduce prog --> defs defmain defs
+    action 'ELSE' (noprec):   reduce prog --> defs defmain defs
+    action 'FI' (noprec):   reduce prog --> defs defmain defs
+    action 'LPAR' (noprec):   reduce prog --> defs defmain defs
+    action 'RPAR' (noprec):   reduce prog --> defs defmain defs
+    action 'COMMA' (noprec):   reduce prog --> defs defmain defs
+    action 'OR' (noprec):   reduce prog --> defs defmain defs
+    action 'AND' (noprec):   reduce prog --> defs defmain defs
+    action 'PLUS' (noprec):   reduce prog --> defs defmain defs
+    action 'MINUS' (noprec):   reduce prog --> defs defmain defs
+    action 'TIMES' (noprec):   reduce prog --> defs defmain defs
+    action 'DIVIDE' (noprec):   reduce prog --> defs defmain defs
+    action 'MOD' (noprec):   reduce prog --> defs defmain defs
+    action 'POWER' (noprec):   reduce prog --> defs defmain defs
+    action 'LESS' (noprec):   reduce prog --> defs defmain defs
+    action 'GREATER' (noprec):   reduce prog --> defs defmain defs
+    action 'EQUAL' (noprec):   reduce prog --> defs defmain defs
+    action 'NOT' (noprec):   reduce prog --> defs defmain defs
+    action 'PLUSEQUAL' (noprec):   reduce prog --> defs defmain defs
+    action 'MINUSEQUAL' (noprec):   reduce prog --> defs defmain defs
+    action 'POWEREQUAL' (noprec):   reduce prog --> defs defmain defs
+    action 'SWITCH' (noprec):   reduce prog --> defs defmain defs
+    action 'TYPEINT' (noprec):   reduce prog --> defs defmain defs
+    action 'INT' (noprec):   reduce prog --> defs defmain defs
+    action 'ID' (noprec):   reduce prog --> defs defmain defs
+    action 'error' (noprec):   reduce prog --> defs defmain defs
+    action '#' (noprec):   reduce prog --> defs defmain defs
+    action '$$' (noprec):   reduce prog --> defs defmain defs
+
+  immediate action:   reduce prog --> defs defmain defs
+ gotos:
+
+state 17:
+  items:
+    defmain -> 'PROC' . 'MAIN' defvars stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   shift 18
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 18:
+  items:
+    defmain -> 'PROC' 'MAIN' . defvars stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 13
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto type: 29
+    goto defvar: 31
+    goto defvars: 19
+
+state 19:
+  items:
+    defmain -> 'PROC' 'MAIN' defvars . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 20
+
+state 20:
+  items:
+    defmain -> 'PROC' 'MAIN' defvars stmt . 
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'PROC' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'MAIN' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'UNTIL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'ELSE' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'FI' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'LPAR' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'RPAR' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'COMMA' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'OR' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'AND' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'PLUS' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'MINUS' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'TIMES' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'DIVIDE' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'MOD' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'POWER' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'LESS' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'GREATER' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'EQUAL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'NOT' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'PLUSEQUAL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'MINUSEQUAL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'POWEREQUAL' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'SWITCH' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'TYPEINT' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'INT' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action '#' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+    action '$$' (noprec):   reduce defmain --> 'PROC' 'MAIN' defvars stmt
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 21:
+  items:
+    def -> 'PROC' . 'ID' 'LPAR' defvars 'RPAR' stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 22
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 22:
+  items:
+    def -> 'PROC' 'ID' . 'LPAR' defvars 'RPAR' stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 23
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 23:
+  items:
+    def -> 'PROC' 'ID' 'LPAR' . defvars 'RPAR' stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 13
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto type: 29
+    goto defvar: 31
+    goto defvars: 24
+
+state 24:
+  items:
+    def -> 'PROC' 'ID' 'LPAR' defvars . 'RPAR' stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   shift 25
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 25:
+  items:
+    def -> 'PROC' 'ID' 'LPAR' defvars 'RPAR' . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 26
+
+state 26:
+  items:
+    def -> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt . 
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'PROC' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'MAIN' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'UNTIL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'ELSE' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'FI' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'LPAR' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'RPAR' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'COMMA' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'OR' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'AND' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'PLUS' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'MINUS' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'TIMES' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'DIVIDE' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'MOD' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'POWER' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'LESS' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'GREATER' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'EQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'NOT' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'PLUSEQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'MINUSEQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'POWEREQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'SWITCH' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'TYPEINT' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'INT' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action '#' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action '$$' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 27:
+  items:
+    defs -> def . defs
+    defs -> def . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defs --> def
+    action 'LOCAL' (noprec):   reduce defs --> def
+    action 'DELOCAL' (noprec):   reduce defs --> def
+    action 'PROC' (noprec):   shift 21
+    action 'MAIN' (noprec):   reduce defs --> def
+    action 'CALL' (noprec):   reduce defs --> def
+    action 'UNCALL' (noprec):   reduce defs --> def
+    action 'FROM' (noprec):   reduce defs --> def
+    action 'LOOP' (noprec):   reduce defs --> def
+    action 'UNTIL' (noprec):   reduce defs --> def
+    action 'IF' (noprec):   reduce defs --> def
+    action 'THEN' (noprec):   reduce defs --> def
+    action 'ELSE' (noprec):   reduce defs --> def
+    action 'FI' (noprec):   reduce defs --> def
+    action 'LPAR' (noprec):   reduce defs --> def
+    action 'RPAR' (noprec):   reduce defs --> def
+    action 'COMMA' (noprec):   reduce defs --> def
+    action 'OR' (noprec):   reduce defs --> def
+    action 'AND' (noprec):   reduce defs --> def
+    action 'PLUS' (noprec):   reduce defs --> def
+    action 'MINUS' (noprec):   reduce defs --> def
+    action 'TIMES' (noprec):   reduce defs --> def
+    action 'DIVIDE' (noprec):   reduce defs --> def
+    action 'MOD' (noprec):   reduce defs --> def
+    action 'POWER' (noprec):   reduce defs --> def
+    action 'LESS' (noprec):   reduce defs --> def
+    action 'GREATER' (noprec):   reduce defs --> def
+    action 'EQUAL' (noprec):   reduce defs --> def
+    action 'NOT' (noprec):   reduce defs --> def
+    action 'PLUSEQUAL' (noprec):   reduce defs --> def
+    action 'MINUSEQUAL' (noprec):   reduce defs --> def
+    action 'POWEREQUAL' (noprec):   reduce defs --> def
+    action 'SWITCH' (noprec):   reduce defs --> def
+    action 'TYPEINT' (noprec):   reduce defs --> def
+    action 'INT' (noprec):   reduce defs --> def
+    action 'ID' (noprec):   reduce defs --> def
+    action 'error' (noprec):   reduce defs --> def
+    action '#' (noprec):   reduce defs --> def
+    action '$$' (noprec):   reduce defs --> def
+
+  immediate action: <none>
+ gotos:
+    goto def: 27
+    goto defs: 28
+
+state 28:
+  items:
+    defs -> def defs . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defs --> def defs
+    action 'LOCAL' (noprec):   reduce defs --> def defs
+    action 'DELOCAL' (noprec):   reduce defs --> def defs
+    action 'PROC' (noprec):   reduce defs --> def defs
+    action 'MAIN' (noprec):   reduce defs --> def defs
+    action 'CALL' (noprec):   reduce defs --> def defs
+    action 'UNCALL' (noprec):   reduce defs --> def defs
+    action 'FROM' (noprec):   reduce defs --> def defs
+    action 'LOOP' (noprec):   reduce defs --> def defs
+    action 'UNTIL' (noprec):   reduce defs --> def defs
+    action 'IF' (noprec):   reduce defs --> def defs
+    action 'THEN' (noprec):   reduce defs --> def defs
+    action 'ELSE' (noprec):   reduce defs --> def defs
+    action 'FI' (noprec):   reduce defs --> def defs
+    action 'LPAR' (noprec):   reduce defs --> def defs
+    action 'RPAR' (noprec):   reduce defs --> def defs
+    action 'COMMA' (noprec):   reduce defs --> def defs
+    action 'OR' (noprec):   reduce defs --> def defs
+    action 'AND' (noprec):   reduce defs --> def defs
+    action 'PLUS' (noprec):   reduce defs --> def defs
+    action 'MINUS' (noprec):   reduce defs --> def defs
+    action 'TIMES' (noprec):   reduce defs --> def defs
+    action 'DIVIDE' (noprec):   reduce defs --> def defs
+    action 'MOD' (noprec):   reduce defs --> def defs
+    action 'POWER' (noprec):   reduce defs --> def defs
+    action 'LESS' (noprec):   reduce defs --> def defs
+    action 'GREATER' (noprec):   reduce defs --> def defs
+    action 'EQUAL' (noprec):   reduce defs --> def defs
+    action 'NOT' (noprec):   reduce defs --> def defs
+    action 'PLUSEQUAL' (noprec):   reduce defs --> def defs
+    action 'MINUSEQUAL' (noprec):   reduce defs --> def defs
+    action 'POWEREQUAL' (noprec):   reduce defs --> def defs
+    action 'SWITCH' (noprec):   reduce defs --> def defs
+    action 'TYPEINT' (noprec):   reduce defs --> def defs
+    action 'INT' (noprec):   reduce defs --> def defs
+    action 'ID' (noprec):   reduce defs --> def defs
+    action 'error' (noprec):   reduce defs --> def defs
+    action '#' (noprec):   reduce defs --> def defs
+    action '$$' (noprec):   reduce defs --> def defs
+
+  immediate action:   reduce defs --> def defs
+ gotos:
+
+state 29:
+  items:
+    defvar -> type . 'ID'
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 30
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 30:
+  items:
+    defvar -> type 'ID' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defvar --> type 'ID'
+    action 'LOCAL' (noprec):   reduce defvar --> type 'ID'
+    action 'DELOCAL' (noprec):   reduce defvar --> type 'ID'
+    action 'PROC' (noprec):   reduce defvar --> type 'ID'
+    action 'MAIN' (noprec):   reduce defvar --> type 'ID'
+    action 'CALL' (noprec):   reduce defvar --> type 'ID'
+    action 'UNCALL' (noprec):   reduce defvar --> type 'ID'
+    action 'FROM' (noprec):   reduce defvar --> type 'ID'
+    action 'LOOP' (noprec):   reduce defvar --> type 'ID'
+    action 'UNTIL' (noprec):   reduce defvar --> type 'ID'
+    action 'IF' (noprec):   reduce defvar --> type 'ID'
+    action 'THEN' (noprec):   reduce defvar --> type 'ID'
+    action 'ELSE' (noprec):   reduce defvar --> type 'ID'
+    action 'FI' (noprec):   reduce defvar --> type 'ID'
+    action 'LPAR' (noprec):   reduce defvar --> type 'ID'
+    action 'RPAR' (noprec):   reduce defvar --> type 'ID'
+    action 'COMMA' (noprec):   reduce defvar --> type 'ID'
+    action 'OR' (noprec):   reduce defvar --> type 'ID'
+    action 'AND' (noprec):   reduce defvar --> type 'ID'
+    action 'PLUS' (noprec):   reduce defvar --> type 'ID'
+    action 'MINUS' (noprec):   reduce defvar --> type 'ID'
+    action 'TIMES' (noprec):   reduce defvar --> type 'ID'
+    action 'DIVIDE' (noprec):   reduce defvar --> type 'ID'
+    action 'MOD' (noprec):   reduce defvar --> type 'ID'
+    action 'POWER' (noprec):   reduce defvar --> type 'ID'
+    action 'LESS' (noprec):   reduce defvar --> type 'ID'
+    action 'GREATER' (noprec):   reduce defvar --> type 'ID'
+    action 'EQUAL' (noprec):   reduce defvar --> type 'ID'
+    action 'NOT' (noprec):   reduce defvar --> type 'ID'
+    action 'PLUSEQUAL' (noprec):   reduce defvar --> type 'ID'
+    action 'MINUSEQUAL' (noprec):   reduce defvar --> type 'ID'
+    action 'POWEREQUAL' (noprec):   reduce defvar --> type 'ID'
+    action 'SWITCH' (noprec):   reduce defvar --> type 'ID'
+    action 'TYPEINT' (noprec):   reduce defvar --> type 'ID'
+    action 'INT' (noprec):   reduce defvar --> type 'ID'
+    action 'ID' (noprec):   reduce defvar --> type 'ID'
+    action 'error' (noprec):   reduce defvar --> type 'ID'
+    action '#' (noprec):   reduce defvar --> type 'ID'
+    action '$$' (noprec):   reduce defvar --> type 'ID'
+
+  immediate action:   reduce defvar --> type 'ID'
+ gotos:
+
+state 31:
+  items:
+    defvars -> defvar . defvars
+    defvars -> defvar . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defvars --> defvar
+    action 'LOCAL' (noprec):   reduce defvars --> defvar
+    action 'DELOCAL' (noprec):   reduce defvars --> defvar
+    action 'PROC' (noprec):   reduce defvars --> defvar
+    action 'MAIN' (noprec):   reduce defvars --> defvar
+    action 'CALL' (noprec):   reduce defvars --> defvar
+    action 'UNCALL' (noprec):   reduce defvars --> defvar
+    action 'FROM' (noprec):   reduce defvars --> defvar
+    action 'LOOP' (noprec):   reduce defvars --> defvar
+    action 'UNTIL' (noprec):   reduce defvars --> defvar
+    action 'IF' (noprec):   reduce defvars --> defvar
+    action 'THEN' (noprec):   reduce defvars --> defvar
+    action 'ELSE' (noprec):   reduce defvars --> defvar
+    action 'FI' (noprec):   reduce defvars --> defvar
+    action 'LPAR' (noprec):   reduce defvars --> defvar
+    action 'RPAR' (noprec):   reduce defvars --> defvar
+    action 'COMMA' (noprec):   reduce defvars --> defvar
+    action 'OR' (noprec):   reduce defvars --> defvar
+    action 'AND' (noprec):   reduce defvars --> defvar
+    action 'PLUS' (noprec):   reduce defvars --> defvar
+    action 'MINUS' (noprec):   reduce defvars --> defvar
+    action 'TIMES' (noprec):   reduce defvars --> defvar
+    action 'DIVIDE' (noprec):   reduce defvars --> defvar
+    action 'MOD' (noprec):   reduce defvars --> defvar
+    action 'POWER' (noprec):   reduce defvars --> defvar
+    action 'LESS' (noprec):   reduce defvars --> defvar
+    action 'GREATER' (noprec):   reduce defvars --> defvar
+    action 'EQUAL' (noprec):   reduce defvars --> defvar
+    action 'NOT' (noprec):   reduce defvars --> defvar
+    action 'PLUSEQUAL' (noprec):   reduce defvars --> defvar
+    action 'MINUSEQUAL' (noprec):   reduce defvars --> defvar
+    action 'POWEREQUAL' (noprec):   reduce defvars --> defvar
+    action 'SWITCH' (noprec):   reduce defvars --> defvar
+    action 'TYPEINT' (noprec):   reduce defvars --> defvar
+    action 'INT' (noprec):   shift 13
+    action 'ID' (noprec):   reduce defvars --> defvar
+    action 'error' (noprec):   reduce defvars --> defvar
+    action '#' (noprec):   reduce defvars --> defvar
+    action '$$' (noprec):   reduce defvars --> defvar
+
+  immediate action: <none>
+ gotos:
+    goto type: 29
+    goto defvar: 31
+    goto defvars: 32
+
+state 32:
+  items:
+    defvars -> defvar defvars . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defvars --> defvar defvars
+    action 'LOCAL' (noprec):   reduce defvars --> defvar defvars
+    action 'DELOCAL' (noprec):   reduce defvars --> defvar defvars
+    action 'PROC' (noprec):   reduce defvars --> defvar defvars
+    action 'MAIN' (noprec):   reduce defvars --> defvar defvars
+    action 'CALL' (noprec):   reduce defvars --> defvar defvars
+    action 'UNCALL' (noprec):   reduce defvars --> defvar defvars
+    action 'FROM' (noprec):   reduce defvars --> defvar defvars
+    action 'LOOP' (noprec):   reduce defvars --> defvar defvars
+    action 'UNTIL' (noprec):   reduce defvars --> defvar defvars
+    action 'IF' (noprec):   reduce defvars --> defvar defvars
+    action 'THEN' (noprec):   reduce defvars --> defvar defvars
+    action 'ELSE' (noprec):   reduce defvars --> defvar defvars
+    action 'FI' (noprec):   reduce defvars --> defvar defvars
+    action 'LPAR' (noprec):   reduce defvars --> defvar defvars
+    action 'RPAR' (noprec):   reduce defvars --> defvar defvars
+    action 'COMMA' (noprec):   reduce defvars --> defvar defvars
+    action 'OR' (noprec):   reduce defvars --> defvar defvars
+    action 'AND' (noprec):   reduce defvars --> defvar defvars
+    action 'PLUS' (noprec):   reduce defvars --> defvar defvars
+    action 'MINUS' (noprec):   reduce defvars --> defvar defvars
+    action 'TIMES' (noprec):   reduce defvars --> defvar defvars
+    action 'DIVIDE' (noprec):   reduce defvars --> defvar defvars
+    action 'MOD' (noprec):   reduce defvars --> defvar defvars
+    action 'POWER' (noprec):   reduce defvars --> defvar defvars
+    action 'LESS' (noprec):   reduce defvars --> defvar defvars
+    action 'GREATER' (noprec):   reduce defvars --> defvar defvars
+    action 'EQUAL' (noprec):   reduce defvars --> defvar defvars
+    action 'NOT' (noprec):   reduce defvars --> defvar defvars
+    action 'PLUSEQUAL' (noprec):   reduce defvars --> defvar defvars
+    action 'MINUSEQUAL' (noprec):   reduce defvars --> defvar defvars
+    action 'POWEREQUAL' (noprec):   reduce defvars --> defvar defvars
+    action 'SWITCH' (noprec):   reduce defvars --> defvar defvars
+    action 'TYPEINT' (noprec):   reduce defvars --> defvar defvars
+    action 'INT' (noprec):   reduce defvars --> defvar defvars
+    action 'ID' (noprec):   reduce defvars --> defvar defvars
+    action 'error' (noprec):   reduce defvars --> defvar defvars
+    action '#' (noprec):   reduce defvars --> defvar defvars
+    action '$$' (noprec):   reduce defvars --> defvar defvars
+
+  immediate action:   reduce defvars --> defvar defvars
+ gotos:
+
+state 33:
+  items:
+    proc -> 'ID' . 'LPAR' ids 'RPAR'
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 34
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 34:
+  items:
+    proc -> 'ID' 'LPAR' . ids 'RPAR'
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 2
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto ids: 35
+
+state 35:
+  items:
+    proc -> 'ID' 'LPAR' ids . 'RPAR'
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   shift 36
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 36:
+  items:
+    proc -> 'ID' 'LPAR' ids 'RPAR' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'LOCAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'DELOCAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'PROC' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'MAIN' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'CALL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'UNCALL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'FROM' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'LOOP' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'UNTIL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'IF' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'THEN' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'ELSE' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'FI' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'LPAR' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'RPAR' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'COMMA' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'OR' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'AND' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'PLUS' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'MINUS' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'TIMES' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'DIVIDE' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'MOD' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'POWER' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'LESS' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'GREATER' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'EQUAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'NOT' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'PLUSEQUAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'MINUSEQUAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'POWEREQUAL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'SWITCH' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'TYPEINT' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'INT' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'ID' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'error' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action '#' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action '$$' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+
+  immediate action:   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+ gotos:
+
+state 37:
+  items:
+    stmt -> 'CALL' . proc
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 33
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto proc: 38
+
+state 38:
+  items:
+    stmt -> 'CALL' proc . 
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'CALL' proc
+    action 'LOCAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'DELOCAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'PROC' (noprec):   reduce stmt --> 'CALL' proc
+    action 'MAIN' (noprec):   reduce stmt --> 'CALL' proc
+    action 'CALL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'UNCALL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'FROM' (noprec):   reduce stmt --> 'CALL' proc
+    action 'LOOP' (noprec):   reduce stmt --> 'CALL' proc
+    action 'UNTIL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'IF' (noprec):   reduce stmt --> 'CALL' proc
+    action 'THEN' (noprec):   reduce stmt --> 'CALL' proc
+    action 'ELSE' (noprec):   reduce stmt --> 'CALL' proc
+    action 'FI' (noprec):   reduce stmt --> 'CALL' proc
+    action 'LPAR' (noprec):   reduce stmt --> 'CALL' proc
+    action 'RPAR' (noprec):   reduce stmt --> 'CALL' proc
+    action 'COMMA' (noprec):   reduce stmt --> 'CALL' proc
+    action 'OR' (noprec):   reduce stmt --> 'CALL' proc
+    action 'AND' (noprec):   reduce stmt --> 'CALL' proc
+    action 'PLUS' (noprec):   reduce stmt --> 'CALL' proc
+    action 'MINUS' (noprec):   reduce stmt --> 'CALL' proc
+    action 'TIMES' (noprec):   reduce stmt --> 'CALL' proc
+    action 'DIVIDE' (noprec):   reduce stmt --> 'CALL' proc
+    action 'MOD' (noprec):   reduce stmt --> 'CALL' proc
+    action 'POWER' (noprec):   reduce stmt --> 'CALL' proc
+    action 'LESS' (noprec):   reduce stmt --> 'CALL' proc
+    action 'GREATER' (noprec):   reduce stmt --> 'CALL' proc
+    action 'EQUAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'NOT' (noprec):   reduce stmt --> 'CALL' proc
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'SWITCH' (noprec):   reduce stmt --> 'CALL' proc
+    action 'TYPEINT' (noprec):   reduce stmt --> 'CALL' proc
+    action 'INT' (noprec):   reduce stmt --> 'CALL' proc
+    action 'ID' (noprec):   reduce stmt --> 'CALL' proc
+    action 'error' (noprec):   reduce stmt --> 'CALL' proc
+    action '#' (noprec):   reduce stmt --> 'CALL' proc
+    action '$$' (noprec):   reduce stmt --> 'CALL' proc
+
+  immediate action:   reduce stmt --> 'CALL' proc
+ gotos:
+
+state 39:
+  items:
+    stmt -> 'UNCALL' . proc
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 33
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto proc: 40
+
+state 40:
+  items:
+    stmt -> 'UNCALL' proc . 
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'LOCAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'DELOCAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'PROC' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'MAIN' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'CALL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'UNCALL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'FROM' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'LOOP' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'UNTIL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'IF' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'THEN' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'ELSE' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'FI' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'LPAR' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'RPAR' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'COMMA' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'OR' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'AND' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'PLUS' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'MINUS' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'TIMES' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'DIVIDE' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'MOD' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'POWER' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'LESS' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'GREATER' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'EQUAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'NOT' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'SWITCH' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'TYPEINT' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'INT' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'ID' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'error' (noprec):   reduce stmt --> 'UNCALL' proc
+    action '#' (noprec):   reduce stmt --> 'UNCALL' proc
+    action '$$' (noprec):   reduce stmt --> 'UNCALL' proc
+
+  immediate action:   reduce stmt --> 'UNCALL' proc
+ gotos:
+
+state 41:
+  items:
+    stmt -> 'IF' . exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 42
+
+state 42:
+  items:
+    stmt -> 'IF' exp . 'THEN' stmt 'ELSE' stmt 'FI' exp
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   shift 43
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 43:
+  items:
+    stmt -> 'IF' exp 'THEN' . stmt 'ELSE' stmt 'FI' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 44
+
+state 44:
+  items:
+    stmt -> 'IF' exp 'THEN' stmt . 'ELSE' stmt 'FI' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   shift 45
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 45:
+  items:
+    stmt -> 'IF' exp 'THEN' stmt 'ELSE' . stmt 'FI' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 46
+
+state 46:
+  items:
+    stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt . 'FI' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   shift 47
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 47:
+  items:
+    stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 48
+
+state 48:
+  items:
+    stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'PROC' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'CALL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'FROM' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'IF' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'THEN' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'FI' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'INT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'ID' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'error' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action '#' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action '$$' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+
+  immediate action: <none>
+ gotos:
+
+state 49:
+  items:
+    stmt -> 'FROM' . exp 'LOOP' stmt 'UNTIL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 50
+
+state 50:
+  items:
+    stmt -> 'FROM' exp . 'LOOP' stmt 'UNTIL' exp
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   shift 51
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 51:
+  items:
+    stmt -> 'FROM' exp 'LOOP' . stmt 'UNTIL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 52
+
+state 52:
+  items:
+    stmt -> 'FROM' exp 'LOOP' stmt . 'UNTIL' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   shift 53
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 53:
+  items:
+    stmt -> 'FROM' exp 'LOOP' stmt 'UNTIL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 54
+
+state 54:
+  items:
+    stmt -> 'FROM' exp 'LOOP' stmt 'UNTIL' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'PROC' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'CALL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'FROM' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'IF' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'THEN' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'FI' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'INT' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'ID' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'error' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action '#' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action '$$' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 55:
+  items:
+    stmt -> 'ID' . opr
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   shift 5
+    action 'MINUSEQUAL' (noprec):   shift 7
+    action 'POWEREQUAL' (noprec):   shift 9
+    action 'SWITCH' (noprec):   shift 11
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto opr: 56
+
+state 56:
+  items:
+    stmt -> 'ID' opr . 
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'ID' opr
+    action 'LOCAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'DELOCAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'PROC' (noprec):   reduce stmt --> 'ID' opr
+    action 'MAIN' (noprec):   reduce stmt --> 'ID' opr
+    action 'CALL' (noprec):   reduce stmt --> 'ID' opr
+    action 'UNCALL' (noprec):   reduce stmt --> 'ID' opr
+    action 'FROM' (noprec):   reduce stmt --> 'ID' opr
+    action 'LOOP' (noprec):   reduce stmt --> 'ID' opr
+    action 'UNTIL' (noprec):   reduce stmt --> 'ID' opr
+    action 'IF' (noprec):   reduce stmt --> 'ID' opr
+    action 'THEN' (noprec):   reduce stmt --> 'ID' opr
+    action 'ELSE' (noprec):   reduce stmt --> 'ID' opr
+    action 'FI' (noprec):   reduce stmt --> 'ID' opr
+    action 'LPAR' (noprec):   reduce stmt --> 'ID' opr
+    action 'RPAR' (noprec):   reduce stmt --> 'ID' opr
+    action 'COMMA' (noprec):   reduce stmt --> 'ID' opr
+    action 'OR' (noprec):   reduce stmt --> 'ID' opr
+    action 'AND' (noprec):   reduce stmt --> 'ID' opr
+    action 'PLUS' (noprec):   reduce stmt --> 'ID' opr
+    action 'MINUS' (noprec):   reduce stmt --> 'ID' opr
+    action 'TIMES' (noprec):   reduce stmt --> 'ID' opr
+    action 'DIVIDE' (noprec):   reduce stmt --> 'ID' opr
+    action 'MOD' (noprec):   reduce stmt --> 'ID' opr
+    action 'POWER' (noprec):   reduce stmt --> 'ID' opr
+    action 'LESS' (noprec):   reduce stmt --> 'ID' opr
+    action 'GREATER' (noprec):   reduce stmt --> 'ID' opr
+    action 'EQUAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'NOT' (noprec):   reduce stmt --> 'ID' opr
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'ID' opr
+    action 'SWITCH' (noprec):   reduce stmt --> 'ID' opr
+    action 'TYPEINT' (noprec):   reduce stmt --> 'ID' opr
+    action 'INT' (noprec):   reduce stmt --> 'ID' opr
+    action 'ID' (noprec):   reduce stmt --> 'ID' opr
+    action 'error' (noprec):   reduce stmt --> 'ID' opr
+    action '#' (noprec):   reduce stmt --> 'ID' opr
+    action '$$' (noprec):   reduce stmt --> 'ID' opr
+
+  immediate action:   reduce stmt --> 'ID' opr
+ gotos:
+
+state 57:
+  items:
+    stmt -> 'LOCAL' . defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 13
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto type: 29
+    goto defvar: 58
+
+state 58:
+  items:
+    stmt -> 'LOCAL' defvar . 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 59
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 59:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' . exp stmt 'DELOCAL' defvar 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 60
+
+state 60:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp . stmt 'DELOCAL' defvar 'EQUAL' exp
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 61
+
+state 61:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp stmt . 'DELOCAL' defvar 'EQUAL' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   shift 62
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 62:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' . defvar 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 13
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto type: 29
+    goto defvar: 63
+
+state 63:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar . 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 64
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 64:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 65
+
+state 65:
+  items:
+    stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp . 
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'PROC' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'CALL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'FROM' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'IF' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'THEN' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'FI' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'INT' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'ID' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'error' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action '#' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action '$$' (noprec):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 66:
+  items:
+    stmt -> stmt . stmt
+    stmt -> stmt stmt . 
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> stmt stmt
+    action 'LOCAL' (noprec):   shift 57
+    action 'DELOCAL' (noprec):   reduce stmt --> stmt stmt
+    action 'PROC' (noprec):   reduce stmt --> stmt stmt
+    action 'MAIN' (noprec):   reduce stmt --> stmt stmt
+    action 'CALL' (noprec):   shift 37
+    action 'UNCALL' (noprec):   shift 39
+    action 'FROM' (noprec):   shift 49
+    action 'LOOP' (noprec):   reduce stmt --> stmt stmt
+    action 'UNTIL' (noprec):   reduce stmt --> stmt stmt
+    action 'IF' (noprec):   shift 41
+    action 'THEN' (noprec):   reduce stmt --> stmt stmt
+    action 'ELSE' (noprec):   reduce stmt --> stmt stmt
+    action 'FI' (noprec):   reduce stmt --> stmt stmt
+    action 'LPAR' (noprec):   reduce stmt --> stmt stmt
+    action 'RPAR' (noprec):   reduce stmt --> stmt stmt
+    action 'COMMA' (noprec):   reduce stmt --> stmt stmt
+    action 'OR' (noprec):   reduce stmt --> stmt stmt
+    action 'AND' (noprec):   reduce stmt --> stmt stmt
+    action 'PLUS' (noprec):   reduce stmt --> stmt stmt
+    action 'MINUS' (noprec):   reduce stmt --> stmt stmt
+    action 'TIMES' (noprec):   reduce stmt --> stmt stmt
+    action 'DIVIDE' (noprec):   reduce stmt --> stmt stmt
+    action 'MOD' (noprec):   reduce stmt --> stmt stmt
+    action 'POWER' (noprec):   reduce stmt --> stmt stmt
+    action 'LESS' (noprec):   reduce stmt --> stmt stmt
+    action 'GREATER' (noprec):   reduce stmt --> stmt stmt
+    action 'EQUAL' (noprec):   reduce stmt --> stmt stmt
+    action 'NOT' (noprec):   reduce stmt --> stmt stmt
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> stmt stmt
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> stmt stmt
+    action 'POWEREQUAL' (noprec):   reduce stmt --> stmt stmt
+    action 'SWITCH' (noprec):   reduce stmt --> stmt stmt
+    action 'TYPEINT' (noprec):   reduce stmt --> stmt stmt
+    action 'INT' (noprec):   reduce stmt --> stmt stmt
+    action 'ID' (noprec):   shift 55
+    action 'error' (noprec):   reduce stmt --> stmt stmt
+    action '#' (noprec):   reduce stmt --> stmt stmt
+    action '$$' (noprec):   reduce stmt --> stmt stmt
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 66
+
+state 67:
+  items:
+    exp -> 'INT' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> 'INT'
+    action 'LOCAL' (noprec):   reduce exp --> 'INT'
+    action 'DELOCAL' (noprec):   reduce exp --> 'INT'
+    action 'PROC' (noprec):   reduce exp --> 'INT'
+    action 'MAIN' (noprec):   reduce exp --> 'INT'
+    action 'CALL' (noprec):   reduce exp --> 'INT'
+    action 'UNCALL' (noprec):   reduce exp --> 'INT'
+    action 'FROM' (noprec):   reduce exp --> 'INT'
+    action 'LOOP' (noprec):   reduce exp --> 'INT'
+    action 'UNTIL' (noprec):   reduce exp --> 'INT'
+    action 'IF' (noprec):   reduce exp --> 'INT'
+    action 'THEN' (noprec):   reduce exp --> 'INT'
+    action 'ELSE' (noprec):   reduce exp --> 'INT'
+    action 'FI' (noprec):   reduce exp --> 'INT'
+    action 'LPAR' (noprec):   reduce exp --> 'INT'
+    action 'RPAR' (noprec):   reduce exp --> 'INT'
+    action 'COMMA' (noprec):   reduce exp --> 'INT'
+    action 'OR' (noprec):   reduce exp --> 'INT'
+    action 'AND' (noprec):   reduce exp --> 'INT'
+    action 'PLUS' (noprec):   reduce exp --> 'INT'
+    action 'MINUS' (noprec):   reduce exp --> 'INT'
+    action 'TIMES' (noprec):   reduce exp --> 'INT'
+    action 'DIVIDE' (noprec):   reduce exp --> 'INT'
+    action 'MOD' (noprec):   reduce exp --> 'INT'
+    action 'POWER' (noprec):   reduce exp --> 'INT'
+    action 'LESS' (noprec):   reduce exp --> 'INT'
+    action 'GREATER' (noprec):   reduce exp --> 'INT'
+    action 'EQUAL' (noprec):   reduce exp --> 'INT'
+    action 'NOT' (noprec):   reduce exp --> 'INT'
+    action 'PLUSEQUAL' (noprec):   reduce exp --> 'INT'
+    action 'MINUSEQUAL' (noprec):   reduce exp --> 'INT'
+    action 'POWEREQUAL' (noprec):   reduce exp --> 'INT'
+    action 'SWITCH' (noprec):   reduce exp --> 'INT'
+    action 'TYPEINT' (noprec):   reduce exp --> 'INT'
+    action 'INT' (noprec):   reduce exp --> 'INT'
+    action 'ID' (noprec):   reduce exp --> 'INT'
+    action 'error' (noprec):   reduce exp --> 'INT'
+    action '#' (noprec):   reduce exp --> 'INT'
+    action '$$' (noprec):   reduce exp --> 'INT'
+
+  immediate action:   reduce exp --> 'INT'
+ gotos:
+
+state 68:
+  items:
+    exp -> 'ID' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> 'ID'
+    action 'LOCAL' (noprec):   reduce exp --> 'ID'
+    action 'DELOCAL' (noprec):   reduce exp --> 'ID'
+    action 'PROC' (noprec):   reduce exp --> 'ID'
+    action 'MAIN' (noprec):   reduce exp --> 'ID'
+    action 'CALL' (noprec):   reduce exp --> 'ID'
+    action 'UNCALL' (noprec):   reduce exp --> 'ID'
+    action 'FROM' (noprec):   reduce exp --> 'ID'
+    action 'LOOP' (noprec):   reduce exp --> 'ID'
+    action 'UNTIL' (noprec):   reduce exp --> 'ID'
+    action 'IF' (noprec):   reduce exp --> 'ID'
+    action 'THEN' (noprec):   reduce exp --> 'ID'
+    action 'ELSE' (noprec):   reduce exp --> 'ID'
+    action 'FI' (noprec):   reduce exp --> 'ID'
+    action 'LPAR' (noprec):   reduce exp --> 'ID'
+    action 'RPAR' (noprec):   reduce exp --> 'ID'
+    action 'COMMA' (noprec):   reduce exp --> 'ID'
+    action 'OR' (noprec):   reduce exp --> 'ID'
+    action 'AND' (noprec):   reduce exp --> 'ID'
+    action 'PLUS' (noprec):   reduce exp --> 'ID'
+    action 'MINUS' (noprec):   reduce exp --> 'ID'
+    action 'TIMES' (noprec):   reduce exp --> 'ID'
+    action 'DIVIDE' (noprec):   reduce exp --> 'ID'
+    action 'MOD' (noprec):   reduce exp --> 'ID'
+    action 'POWER' (noprec):   reduce exp --> 'ID'
+    action 'LESS' (noprec):   reduce exp --> 'ID'
+    action 'GREATER' (noprec):   reduce exp --> 'ID'
+    action 'EQUAL' (noprec):   reduce exp --> 'ID'
+    action 'NOT' (noprec):   reduce exp --> 'ID'
+    action 'PLUSEQUAL' (noprec):   reduce exp --> 'ID'
+    action 'MINUSEQUAL' (noprec):   reduce exp --> 'ID'
+    action 'POWEREQUAL' (noprec):   reduce exp --> 'ID'
+    action 'SWITCH' (noprec):   reduce exp --> 'ID'
+    action 'TYPEINT' (noprec):   reduce exp --> 'ID'
+    action 'INT' (noprec):   reduce exp --> 'ID'
+    action 'ID' (noprec):   reduce exp --> 'ID'
+    action 'error' (noprec):   reduce exp --> 'ID'
+    action '#' (noprec):   reduce exp --> 'ID'
+    action '$$' (noprec):   reduce exp --> 'ID'
+
+  immediate action:   reduce exp --> 'ID'
+ gotos:
+
+state 69:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp 'NOT' 'EQUAL' exp . 
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'IF' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'FI' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'INT' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'ID' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action 'error' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action '#' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+    action '$$' (noprec):   reduce exp --> exp 'NOT' 'EQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 70:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp 'PLUS' exp . 
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'IF' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'FI' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'INT' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'ID' (noprec):   reduce exp --> exp 'PLUS' exp
+    action 'error' (noprec):   reduce exp --> exp 'PLUS' exp
+    action '#' (noprec):   reduce exp --> exp 'PLUS' exp
+    action '$$' (noprec):   reduce exp --> exp 'PLUS' exp
+
+  immediate action: <none>
+ gotos:
+
+state 71:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp 'MINUS' exp . 
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'IF' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'FI' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'INT' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'ID' (noprec):   reduce exp --> exp 'MINUS' exp
+    action 'error' (noprec):   reduce exp --> exp 'MINUS' exp
+    action '#' (noprec):   reduce exp --> exp 'MINUS' exp
+    action '$$' (noprec):   reduce exp --> exp 'MINUS' exp
+
+  immediate action: <none>
+ gotos:
+
+state 72:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp 'TIMES' exp . 
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'IF' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'FI' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'INT' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'ID' (noprec):   reduce exp --> exp 'TIMES' exp
+    action 'error' (noprec):   reduce exp --> exp 'TIMES' exp
+    action '#' (noprec):   reduce exp --> exp 'TIMES' exp
+    action '$$' (noprec):   reduce exp --> exp 'TIMES' exp
+
+  immediate action: <none>
+ gotos:
+
+state 73:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp 'DIVIDE' exp . 
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'IF' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'FI' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'INT' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'ID' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action 'error' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action '#' (noprec):   reduce exp --> exp 'DIVIDE' exp
+    action '$$' (noprec):   reduce exp --> exp 'DIVIDE' exp
+
+  immediate action: <none>
+ gotos:
+
+state 74:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp 'MOD' exp . 
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'IF' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'FI' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'INT' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'ID' (noprec):   reduce exp --> exp 'MOD' exp
+    action 'error' (noprec):   reduce exp --> exp 'MOD' exp
+    action '#' (noprec):   reduce exp --> exp 'MOD' exp
+    action '$$' (noprec):   reduce exp --> exp 'MOD' exp
+
+  immediate action: <none>
+ gotos:
+
+state 75:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp 'LESS' 'EQUAL' exp . 
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'IF' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'FI' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'INT' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'ID' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action 'error' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action '#' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+    action '$$' (noprec):   reduce exp --> exp 'LESS' 'EQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 76:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp 'GREATER' 'EQUAL' exp . 
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'IF' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'FI' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'INT' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'ID' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action 'error' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action '#' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+    action '$$' (noprec):   reduce exp --> exp 'GREATER' 'EQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 77:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp 'EQUAL' 'EQUAL' exp . 
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'IF' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'FI' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'INT' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'ID' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action 'error' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action '#' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+    action '$$' (noprec):   reduce exp --> exp 'EQUAL' 'EQUAL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 78:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp 'LESS' exp . 
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'IF' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'FI' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'INT' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'ID' (noprec):   reduce exp --> exp 'LESS' exp
+    action 'error' (noprec):   reduce exp --> exp 'LESS' exp
+    action '#' (noprec):   reduce exp --> exp 'LESS' exp
+    action '$$' (noprec):   reduce exp --> exp 'LESS' exp
+
+  immediate action: <none>
+ gotos:
+
+state 79:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp 'GREATER' exp . 
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'IF' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'FI' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'INT' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'ID' (noprec):   reduce exp --> exp 'GREATER' exp
+    action 'error' (noprec):   reduce exp --> exp 'GREATER' exp
+    action '#' (noprec):   reduce exp --> exp 'GREATER' exp
+    action '$$' (noprec):   reduce exp --> exp 'GREATER' exp
+
+  immediate action: <none>
+ gotos:
+
+state 80:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp 'AND' exp . 
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'AND' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'AND' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'AND' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'AND' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'AND' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'IF' (noprec):   reduce exp --> exp 'AND' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'AND' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'AND' exp
+    action 'FI' (noprec):   reduce exp --> exp 'AND' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'AND' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'AND' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'AND' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'AND' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'AND' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'AND' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'AND' exp
+    action 'INT' (noprec):   reduce exp --> exp 'AND' exp
+    action 'ID' (noprec):   reduce exp --> exp 'AND' exp
+    action 'error' (noprec):   reduce exp --> exp 'AND' exp
+    action '#' (noprec):   reduce exp --> exp 'AND' exp
+    action '$$' (noprec):   reduce exp --> exp 'AND' exp
+
+  immediate action: <none>
+ gotos:
+
+state 81:
+  items:
+    exp -> exp . 'NOT' 'EQUAL' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LESS' 'EQUAL' exp
+    exp -> exp . 'GREATER' 'EQUAL' exp
+    exp -> exp . 'EQUAL' 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+    exp -> exp 'OR' exp . 
+
+  actions:
+    action 'EOF' (noprec):   reduce exp --> exp 'OR' exp
+    action 'LOCAL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'DELOCAL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'PROC' (noprec):   reduce exp --> exp 'OR' exp
+    action 'MAIN' (noprec):   reduce exp --> exp 'OR' exp
+    action 'CALL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'UNCALL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'FROM' (noprec):   reduce exp --> exp 'OR' exp
+    action 'LOOP' (noprec):   reduce exp --> exp 'OR' exp
+    action 'UNTIL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'IF' (noprec):   reduce exp --> exp 'OR' exp
+    action 'THEN' (noprec):   reduce exp --> exp 'OR' exp
+    action 'ELSE' (noprec):   reduce exp --> exp 'OR' exp
+    action 'FI' (noprec):   reduce exp --> exp 'OR' exp
+    action 'LPAR' (noprec):   reduce exp --> exp 'OR' exp
+    action 'RPAR' (noprec):   reduce exp --> exp 'OR' exp
+    action 'COMMA' (noprec):   reduce exp --> exp 'OR' exp
+    action 'OR' (noprec):   shift 96
+    action 'AND' (noprec):   shift 95
+    action 'PLUS' (noprec):   shift 84
+    action 'MINUS' (noprec):   shift 85
+    action 'TIMES' (noprec):   shift 86
+    action 'DIVIDE' (noprec):   shift 87
+    action 'MOD' (noprec):   shift 88
+    action 'POWER' (noprec):   reduce exp --> exp 'OR' exp
+    action 'LESS' (noprec):   shift 89
+    action 'GREATER' (noprec):   shift 91
+    action 'EQUAL' (noprec):   shift 93
+    action 'NOT' (noprec):   shift 82
+    action 'PLUSEQUAL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'MINUSEQUAL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'POWEREQUAL' (noprec):   reduce exp --> exp 'OR' exp
+    action 'SWITCH' (noprec):   reduce exp --> exp 'OR' exp
+    action 'TYPEINT' (noprec):   reduce exp --> exp 'OR' exp
+    action 'INT' (noprec):   reduce exp --> exp 'OR' exp
+    action 'ID' (noprec):   reduce exp --> exp 'OR' exp
+    action 'error' (noprec):   reduce exp --> exp 'OR' exp
+    action '#' (noprec):   reduce exp --> exp 'OR' exp
+    action '$$' (noprec):   reduce exp --> exp 'OR' exp
+
+  immediate action: <none>
+ gotos:
+
+state 82:
+  items:
+    exp -> exp 'NOT' . 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 83
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 83:
+  items:
+    exp -> exp 'NOT' 'EQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 69
+
+state 84:
+  items:
+    exp -> exp 'PLUS' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 70
+
+state 85:
+  items:
+    exp -> exp 'MINUS' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 71
+
+state 86:
+  items:
+    exp -> exp 'TIMES' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 72
+
+state 87:
+  items:
+    exp -> exp 'DIVIDE' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 73
+
+state 88:
+  items:
+    exp -> exp 'MOD' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 74
+
+state 89:
+  items:
+    exp -> exp 'LESS' . 'EQUAL' exp
+    exp -> exp 'LESS' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 90
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 78
+
+state 90:
+  items:
+    exp -> exp 'LESS' 'EQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 75
+
+state 91:
+  items:
+    exp -> exp 'GREATER' . 'EQUAL' exp
+    exp -> exp 'GREATER' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 92
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 79
+
+state 92:
+  items:
+    exp -> exp 'GREATER' 'EQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 76
+
+state 93:
+  items:
+    exp -> exp 'EQUAL' . 'EQUAL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   shift 94
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   error
+    action 'ID' (noprec):   error
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+
+state 94:
+  items:
+    exp -> exp 'EQUAL' 'EQUAL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 77
+
+state 95:
+  items:
+    exp -> exp 'AND' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 80
+
+state 96:
+  items:
+    exp -> exp 'OR' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   error
+    action 'RPAR' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'POWER' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 67
+    action 'ID' (noprec):   shift 68
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 81
+
+
+startStates = 0
+------------------------
