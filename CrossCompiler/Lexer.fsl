@@ -5,8 +5,14 @@ open System
 open Microsoft.FSharp.Text.Lexing
 open System.Text
 
+exception LexicalError of string
+
+let LexerError Lexbuf s =
+    raise (LexicalError (s))
+
 let keywords (s) =
      match s with
+       | "int"          -> Parser.TYPEINT
        | "if"           -> Parser.IF
        | "then"         -> Parser.THEN
        | "else"         -> Parser.ELSE
@@ -17,17 +23,9 @@ let keywords (s) =
        | "from"         -> Parser.FROM
        | "loop"         -> Parser.LOOP
        | "until"        -> Parser.UNTIL
-       | "main()"       -> Parser.MAIN
        | "local"        -> Parser.LOCAL
        | "delocal"      -> Parser.DELOCAL
        | _              -> Parser.ID (s)
-
-let opr (s) =
-    match s with
-      | "+="            -> Parser.PLUSEQUAL
-      | "-="            -> Parser.MINUSEQUAL
-      | "^="            -> Parser.POWEREQUAL
-      | "<=>"           -> Parser.SWITCH
 
 let op (s) =
     match s with
@@ -36,36 +34,44 @@ let op (s) =
       | "*"             -> Parser.TIMES
       | "/"             -> Parser.DIVIDE
       | "%"             -> Parser.MOD
-      | "^"             -> Parser.POWER
       | "|"             -> Parser.OR
       | "&"             -> Parser.AND
       | "!"             -> Parser.NOT
       | "<"             -> Parser.LESS
       | ">"             -> Parser.GREATER
+      | "+="            -> Parser.PLUSEQUAL
+      | "-="            -> Parser.MINUSEQUAL
+      | "^="            -> Parser.POWEREQUAL
+      | "<=>"           -> Parser.SWITCH
       | "="             -> Parser.EQUAL
+      | "<="            -> Parser.LEQ
+      | ">="            -> Parser.GEQ
+      | "!="            -> Parser.NOTEQ
 
-let types (s) =
+let mainDef (s) =
     match s with
-      | "int"           -> Parser.TYPEINT
+      | "procedure main()"       -> Parser.MAIN
+
 }
 
 let whitespace    = [' ' '\t' '\r']
 let newline       = ['\n' '\012']
-let opReg         = ['+' '-' '*' '/' '%' '^' '|' '&' '<' '>' '=' '!']
-let oprReg        = "+=" | "-=" | "^=" | "<=>"
-let typesReg      = "int"
+let opReg         = ['+' '-' '*' '/' '%' '^' '|' '&' '<' '>' '=' '!']+
 let idReg         = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
+let mainReg       = "procedure main()"
 let num           = ['0'] | ['1'-'9']['0'-'9']*
 
 rule tokenize = parse
   | whitespace      { tokenize lexbuf }
   | newline         { lexbuf.EndPos <- lexbuf.EndPos.NextLine; tokenize lexbuf }
   | opReg           { op (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
-  | oprReg          { opr (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
-  | typesReg        { types (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
+  | mainReg         { mainDef (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
   | idReg           { keywords (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
   | num             { Parser.INT( int (Encoding.UTF8.GetString(lexbuf.Lexeme))) }
   | '('             { Parser.LPAR }
   | ')'             { Parser.RPAR }
+  | '['             { Parser.LBRACKET }
+  | ']'             { Parser.RBRACKET }
   | ','             { Parser.COMMA }
   | eof             { Parser.EOF }
+  | _               { LexerError lexbuf "illegal Symbol" }

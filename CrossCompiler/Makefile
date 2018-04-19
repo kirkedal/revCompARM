@@ -10,9 +10,9 @@ ParserGen=Parser.fs
 AbSynLib=AbSyn.dll
 ParserLib=Parser.dll
 LexerLib=Lexer.dll
-Interpreter=Interpreter.fs
+Translate=Translate.fs
 
-all: $(AbSynLib)
+all: $(Translate)
 
 $(LexerGen): Lexer.fsl
 	$(fslex) Lexer.fsl
@@ -29,8 +29,8 @@ $(ParserLib): $(ParserGen) $(AbSynLib)
 $(LexerLib): $(LexerGen) $(AbSynLib) $(ParserLib)
 	$(fsharpc) -a $(LexerGen) -r $(AbSynLib) -r $(ParserLib) -r $(powerpack)
 
-$(Interpreter): $(LexerLib) $(AbSynLib) $(ParserLib)
-	$(fsharpc) -r $(LexerLib) -r $(AbSynLib) -r $(ParserLib) -r $(powerpack) $(Interpreter)
+$(Translate): $(LexerLib) $(AbSynLib) $(ParserLib)
+	$(fsharpc) -r $(LexerLib) -r $(AbSynLib) -r $(ParserLib) -r $(powerpack) $(Translate)
 
 clean:
-	rm -f Interpreter.exe $(LexerLib) $(AbSynLib) $(ParserLib) $(LexerGen) $(ParserGen) Parser.fsi
+	rm -f Translate.exe $(LexerLib) $(AbSynLib) $(ParserLib) $(LexerGen) $(ParserGen) Parser.fsi
