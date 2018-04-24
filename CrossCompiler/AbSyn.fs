@@ -18,7 +18,6 @@ type Exp =
   | Equal   of Exp * Exp
   | Plus    of Exp * Exp
   | Minus   of Exp * Exp
-  | Power   of Exp * Exp
   | NotEq   of Exp * Exp
   | Times   of Exp * Exp
   | Divide  of Exp * Exp
@@ -27,6 +26,7 @@ type Exp =
   | Leq     of Exp * Exp
   | Great   of Exp * Exp
   | Less    of Exp * Exp
+  | Par     of Exp
 
 type Defvar =
     Dvar    of Type * string
