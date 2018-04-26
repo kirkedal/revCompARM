@@ -59,7 +59,7 @@ let rec evalExp (e) =
   | Equal (e1, e2) ->
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
-      ( res1 + " = " + res2 )
+      ( res1 + " == " + res2 )
   | Less (e1, e2) ->
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
@@ -80,58 +80,152 @@ let rec evalExp (e) =
       let res1 = evalExp(e1)
       ( "( " + res1 + " )" )
 
-and evalOpR (e) =
+and evalOpR (e, var, forward) =
+  let resVar = evalExp(var)
   match e with
   | PlusE (e1) ->
-      let res1 = evalExp(e1)
-      ( " += " + res1 )
+      if not forward then
+        evalOpR(MinusE (e1), var, true)
+      else
+        let res1 = evalExp(e1)
+        ( resVar + " += " + res1 )
   | MinusE (e1) ->
-      let res1 = evalExp(e1)
-      ( " -= " + res1 )
+      if not forward then
+        evalOpR(PlusE (e1), var, true)
+      else
+        let res1 = evalExp(e1)
+        ( resVar + " -= " + res1 )
   | PowerE (e1) ->
       let res1 = evalExp(e1)
-      ( " ^= " + res1 )
+      ( resVar + " ^= " + res1 )
   | Switch (e1) ->
       let res1 = evalExp(e1)
-      ( " <=> " + res1 )
+      let fst = evalOpR(PowerE(e1), var, true)
+      let snd = evalOpR(PowerE(var), e1, true)
+      ( fst + ";\n" + snd + ";\n" + fst )
 
-and evalStmt (e) =
+and evalStmt (e, forward) =
   //printfn "%A" e
   match e with
   | Stmts (s1, s2) ->
-      let res1 = evalStmt(s1)
-      let res2 = evalStmt(s2)
-      ( res1 + "\n" + res2 )
+      let res1 = evalStmt(s1, forward)
+      let res2 = evalStmt(s2, forward)
+      let output =
+        if forward then
+          ( res1 + "\n" + res2 )
+        else
+          ( res2 + "\n" + res1 )
+      output
+
   | Call (p) ->
-      let res1 = evalProc(p, true)
-      ( res1 + ";" )
+      if not forward then
+        evalStmt(Uncall(p), true)
+      else
+        let res1 = evalProc(p, true)
+        ( res1 + ";" )
   | Uncall (p) ->
-      let res1 = evalProc(p, false)
-      ( res1 + ";" )
-  (*
-  | If (e1, s1, s2, e2)
-  | From (e1, s, e2)
-  | Local (dv1, e1, s, dv2, e2)
-  *)
+      if not forward then
+        evalStmt(Call(p), true)
+      else
+        let res1 = evalProc(p, false)
+        ( res1 + ";" )
+  | If (e1, s1, s2, e2) ->
+      let mutable output = "if("
+      let res1 =
+        if forward then
+          evalStmt(s1, forward)
+        else
+          evalStmt(s1, false)
+      let res2 =
+        if forward then
+          evalStmt(s2, forward)
+        else
+          evalStmt(s2, false)
+      let com1 =
+        if forward then
+          evalExp(e1)
+        else
+          evalExp(e2)
+      let com2 =
+        if forward then
+          evalExp(e2)
+        else
+          evalExp(e1)
+
+      let assert1 = "\nassert(" + com2 + ");\n"
+      let assert2 = "\nassert(!(" + com2 + "));\n"
+      let ifpart = res1 + assert1
+      let elsepart = res2 + assert2
+      output <- output + com1 + ") {\n" + ifpart + "} else {\n" + elsepart + "}"
+      output
+
+  | From (e1, s, e2) ->
+      let mutable output = ""
+      let resExp1 =
+        if forward then
+          evalExp(e1)
+        else
+          evalExp(e2)
+      let resExp2 =
+        if forward then
+          evalExp(e2)
+        else
+          evalExp(e1)
+      let res1 =
+        if forward then
+          evalStmt(s, forward)
+        else
+          evalStmt(s, false)
+      output <- output + "assert(" + resExp1 + ");\n"
+      output <- output + "while(!(" + resExp2 + ")) {\n"
+      output <- output + res1
+      output <- output + "\nassert(!(" + resExp1 + "));\n}"
+      output
+
+  | Local (dv1, e1, s, dv2, e2) ->
+      let mutable output = "int "
+      let resExp1 =
+        if forward then
+          evalExp(e1)
+        else
+          evalExp(e2)
+      let resExp2 =
+        if forward then
+          evalExp(e2)
+        else
+          evalExp(e1)
+      let res1 =
+        if forward then
+          evalStmt(s, forward)
+        else
+          evalStmt(s, false)
+      match dv1, dv2 with
+      | Dvar(_,str1), Dvar(_,str2) ->
+              if forward then
+                output <- output + str1 + " = " + resExp1 + ";\n" + res1 + "\nassert(" + str2 + " == " + resExp2 + ");"
+              else
+                output <- output + str2 + " = " + resExp1 + ";\n" + res1 + "\nassert(" + str1 + " == " + resExp2 + ");"
+      output
+
   | VarApp (e1, opr) ->
-      let res1 = evalExp(e1)
-      let res2 = evalOpR(opr)
-      ( res1 + res2 + ";" )
+      let res2 = evalOpR(opr, e1, forward)
+      ( res2 + ";" )
 
 and evalDefvar (e, param) =
   match e with
   | Dvar (t, str) ->
-      let resType = (string) t
+      let resType = ((string) t).ToLower()
       if param then
         ( resType + " &" + str )
       else
         ( resType + " " + str + " = 0" )
   | Array (t, str, e1) ->
-      let resType = (string) t
+      let resType = ((string) t).ToLower()
+      let res = evalExp(e1)
       if param then
         ( resType + " *" + str )
       else
-        ( resType + " " + str + " = {0}" )
+        ( resType + " " + str + "[" + res + "] = {0}" )
 
 and evalProc (e, forward) =
   match e with
@@ -149,34 +243,43 @@ and evalProc (e, forward) =
         else
           param <- param + ")"
       ( str + direction + param )
-  (*
-and evalDef (e) =
-  match e with
-  | Define (str, dvList, s)
 
-  *)
+and evalDef (e, forward) =
+  match e with
+  | Define (str, dvList, s) ->
+      let mutable output = ""
+      let res1 = evalStmt(s, forward)
+      if forward then
+        output <- "void " + str + "_forward("
+      else
+        output <- "void " + str + "_backwards("
+      let param = makeParams(dvList)
+      output <- output + param + " {\n"
+      ( output + res1 + "\n}" )
+
 and evalMain (e) =
   //printfn "%A" e
   match e with
   | Main (dvList, s) ->
-      let res1 = evalStmt(s)
-      //printfn "St: %A \n Dv: %A" s dvList
-      let mutable output = "int Main() {\n"
+      let res1 = evalStmt(s, true)
+      let mutable output = "int main() {\n"
       for i = 0 to dvList.Length - 1 do
         output <- output + evalDefvar(dvList.[i], false) + ";"
         if i < dvList.Length-1 then
           output <- output + "\n"
-      ( output + "\n" + res1 + "\nreturn 1;\n}")
+      //let printC = "\nstd::cout << x1 << \", \" << x2 << \" \n \";"
+      ( output + "\n" + res1 + "\nreturn 0;\n}")
 
 and evalProg (e) =
   match e with
   | Program (defList1, dm, defList2) ->
       let mutable ret = ""
       let input = defList1 @ defList2
-      //let procDef = addProc (input)
       //Setup Includes
       let pre = "#include <stdio.h>\n" +
                 "#include <assert.h>\n" +
+                "#include <iostream>\n" +
+                "using namespace std;\n" +
                 "\n\n"
       let addProc =
         let mutable output = ""
@@ -190,26 +293,28 @@ and evalProg (e) =
                 ProcTable.Add(str, p)
               let fwd = "void " + str + "_forward("
               let bwd = "void " + str + "_backwards("
-              let param =
-                let mutable pars = ""
-                for i = 0 to dvList.Length-1 do
-                  pars <- pars + evalDefvar(dvList.[i], true)
-                  if i < dvList.Length-1 then
-                    pars <- pars + ", "
-                  else
-                    pars <- pars + ");"
-                pars
-              output <- output + fwd + param + "\n" + bwd + param + "\n\n"
+              let param = makeParams(dvList)
+              output <- output + fwd + param + ";\n" + bwd + param + ";\n\n"
         output
       let addProcBody =
+        let mutable output = ""
         for body in input do
-          evalDef(body)
+          output <- output + evalDef(body, true) + "\n\n"
+          output <- output + evalDef(body, false) + "\n\n"
+        output
       let addMain = evalMain(dm)
-      ret <- ret + pre + addProc + addMain
+      ret <- ret + pre + addProc + addProcBody + addMain
       ret
 
-
-
+and makeParams (dvList) =
+  let mutable pars = ""
+  for i = 0 to dvList.Length-1 do
+    pars <- pars + evalDefvar(dvList.[i], true)
+    if i < dvList.Length-1 then
+      pars <- pars + ", "
+    else
+      pars <- pars + ")"
+  pars
 
 let parseString (s : string) =
   let mutable lexbuf = Lexing.LexBuffer<_>.FromBytes (Encoding.UTF8.GetBytes s)
@@ -246,6 +351,9 @@ let translate (filename : string) =
     printfn "%A\n\n" pgm
     let res = evalProg(pgm)
     printfn "%s" res
+    let outputLength = filename.Length - 6
+    let newName = filename.Remove(outputLength)
+    File.WriteAllText(newName + ".cpp", res)
     pgm
 
 [<EntryPoint>]
