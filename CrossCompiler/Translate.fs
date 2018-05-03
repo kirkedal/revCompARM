@@ -194,8 +194,6 @@ and evalStmt (e, forward) =
         if n = 1 then
           output <- output + "\nassert(!(" + resExp1 + "));\n"
         output <- output + res1
-      //output <- output + "\nassert(!(" + resExp1 + "));\n}"
-      //output <- output + "assert(" + resExp1 + ");\n"
       output <- output + "\n}"
       output
 
@@ -275,7 +273,6 @@ and evalDef (e, forward) =
       ( output + res1 + "\n}" )
 
 and evalMain (e) =
-  //printfn "%A" e
   match e with
   | Main (dvList, s) ->
       let res1 = evalStmt(s, true)
@@ -284,7 +281,6 @@ and evalMain (e) =
         output <- output + evalDefvar(dvList.[i], false) + ";"
         if i < dvList.Length-1 then
           output <- output + "\n"
-      //let printC = "\nstd::cout << x1 << \", \" << x2 << \" \n \";"
       ( output + "\n" + res1 + "\nreturn 0;\n}")
 
 and evalProg (e) =
@@ -335,9 +331,6 @@ and makeParams (dvList) =
 
 let parseString (s : string) =
   let mutable lexbuf = Lexing.LexBuffer<_>.FromBytes (Encoding.UTF8.GetBytes s)
-  //while not lexbuf.IsPastEndOfStream do
-  //  printfn "%A" (Lexer.tokenize lexbuf)
-  //lexbuf <- Lexing.LexBuffer<_>.FromBytes (Encoding.UTF8.GetBytes s)
   try
     Parser.prog Lexer.tokenize lexbuf
   with e ->
