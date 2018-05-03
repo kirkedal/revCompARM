@@ -1,0 +1,14 @@
+procedure encode(int text, int arc)
+    from text = 50 do
+        text -= 1
+        arc += text
+    until text = 0
+
+
+procedure main()
+    int text
+    int arc
+
+    text += 50
+
+    call encode(text, arc)

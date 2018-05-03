@@ -22,6 +22,7 @@ let keywords (s) =
        | "procedure"    -> Parser.PROC
        | "from"         -> Parser.FROM
        | "loop"         -> Parser.LOOP
+       | "do"           -> Parser.DO
        | "until"        -> Parser.UNTIL
        | "local"        -> Parser.LOCAL
        | "delocal"      -> Parser.DELOCAL
@@ -34,8 +35,8 @@ let op (s) =
       | "*"             -> Parser.TIMES
       | "/"             -> Parser.DIVIDE
       | "%"             -> Parser.MOD
-      | "|"             -> Parser.OR
-      | "&"             -> Parser.AND
+      | "||"             -> Parser.OR
+      | "&&"             -> Parser.AND
       | "!"             -> Parser.NOT
       | "<"             -> Parser.LESS
       | ">"             -> Parser.GREATER

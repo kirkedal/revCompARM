@@ -16,6 +16,7 @@ state 0:
     action 'FROM' (noprec):   reduce defs --> 
     action 'LOOP' (noprec):   reduce defs --> 
     action 'UNTIL' (noprec):   reduce defs --> 
+    action 'DO' (noprec):   reduce defs --> 
     action 'IF' (noprec):   reduce defs --> 
     action 'THEN' (noprec):   reduce defs --> 
     action 'ELSE' (noprec):   reduce defs --> 
@@ -71,6 +72,7 @@ state 1:
     action 'FROM' (noprec):   accept
     action 'LOOP' (noprec):   accept
     action 'UNTIL' (noprec):   accept
+    action 'DO' (noprec):   accept
     action 'IF' (noprec):   accept
     action 'THEN' (noprec):   accept
     action 'ELSE' (noprec):   accept
@@ -124,6 +126,7 @@ state 2:
     action 'FROM' (noprec):   reduce ids --> 'ID'
     action 'LOOP' (noprec):   reduce ids --> 'ID'
     action 'UNTIL' (noprec):   reduce ids --> 'ID'
+    action 'DO' (noprec):   reduce ids --> 'ID'
     action 'IF' (noprec):   reduce ids --> 'ID'
     action 'THEN' (noprec):   reduce ids --> 'ID'
     action 'ELSE' (noprec):   reduce ids --> 'ID'
@@ -176,6 +179,7 @@ state 3:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -229,6 +233,7 @@ state 4:
     action 'FROM' (noprec):   reduce ids --> 'ID' 'COMMA' ids
     action 'LOOP' (noprec):   reduce ids --> 'ID' 'COMMA' ids
     action 'UNTIL' (noprec):   reduce ids --> 'ID' 'COMMA' ids
+    action 'DO' (noprec):   reduce ids --> 'ID' 'COMMA' ids
     action 'IF' (noprec):   reduce ids --> 'ID' 'COMMA' ids
     action 'THEN' (noprec):   reduce ids --> 'ID' 'COMMA' ids
     action 'ELSE' (noprec):   reduce ids --> 'ID' 'COMMA' ids
@@ -281,11 +286,12 @@ state 5:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -300,7 +306,7 @@ state 5:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -309,8 +315,8 @@ state 5:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -347,6 +353,7 @@ state 6:
     action 'FROM' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'LOOP' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'UNTIL' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
+    action 'DO' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'IF' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'THEN' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'ELSE' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
@@ -356,20 +363,20 @@ state 6:
     action 'LBRACKET' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'RBRACKET' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'COMMA' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'MINUSEQUAL' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
     action 'POWEREQUAL' (explicit right 9994):   reduce opr --> 'PLUSEQUAL' exp
@@ -399,11 +406,12 @@ state 7:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -418,7 +426,7 @@ state 7:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -427,8 +435,8 @@ state 7:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -465,6 +473,7 @@ state 8:
     action 'FROM' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'LOOP' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'UNTIL' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
+    action 'DO' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'IF' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'THEN' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'ELSE' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
@@ -474,20 +483,20 @@ state 8:
     action 'LBRACKET' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'RBRACKET' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'COMMA' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'MINUSEQUAL' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
     action 'POWEREQUAL' (explicit right 9994):   reduce opr --> 'MINUSEQUAL' exp
@@ -517,11 +526,12 @@ state 9:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -536,7 +546,7 @@ state 9:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -545,8 +555,8 @@ state 9:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -583,6 +593,7 @@ state 10:
     action 'FROM' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'LOOP' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'UNTIL' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
+    action 'DO' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'IF' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'THEN' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'ELSE' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
@@ -592,20 +603,20 @@ state 10:
     action 'LBRACKET' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'RBRACKET' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'COMMA' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'MINUSEQUAL' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
     action 'POWEREQUAL' (explicit right 9994):   reduce opr --> 'POWEREQUAL' exp
@@ -635,11 +646,12 @@ state 11:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -654,7 +666,7 @@ state 11:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -663,8 +675,8 @@ state 11:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -701,6 +713,7 @@ state 12:
     action 'FROM' (noprec):   reduce opr --> 'SWITCH' exp
     action 'LOOP' (noprec):   reduce opr --> 'SWITCH' exp
     action 'UNTIL' (noprec):   reduce opr --> 'SWITCH' exp
+    action 'DO' (noprec):   reduce opr --> 'SWITCH' exp
     action 'IF' (noprec):   reduce opr --> 'SWITCH' exp
     action 'THEN' (noprec):   reduce opr --> 'SWITCH' exp
     action 'ELSE' (noprec):   reduce opr --> 'SWITCH' exp
@@ -710,20 +723,20 @@ state 12:
     action 'LBRACKET' (noprec):   reduce opr --> 'SWITCH' exp
     action 'RBRACKET' (noprec):   reduce opr --> 'SWITCH' exp
     action 'COMMA' (noprec):   reduce opr --> 'SWITCH' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   reduce opr --> 'SWITCH' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   reduce opr --> 'SWITCH' exp
     action 'MINUSEQUAL' (noprec):   reduce opr --> 'SWITCH' exp
     action 'POWEREQUAL' (noprec):   reduce opr --> 'SWITCH' exp
@@ -753,6 +766,7 @@ state 13:
     action 'FROM' (noprec):   reduce type --> 'TYPEINT'
     action 'LOOP' (noprec):   reduce type --> 'TYPEINT'
     action 'UNTIL' (noprec):   reduce type --> 'TYPEINT'
+    action 'DO' (noprec):   reduce type --> 'TYPEINT'
     action 'IF' (noprec):   reduce type --> 'TYPEINT'
     action 'THEN' (noprec):   reduce type --> 'TYPEINT'
     action 'ELSE' (noprec):   reduce type --> 'TYPEINT'
@@ -805,6 +819,7 @@ state 14:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -858,6 +873,7 @@ state 15:
     action 'FROM' (noprec):   reduce defs --> 
     action 'LOOP' (noprec):   reduce defs --> 
     action 'UNTIL' (noprec):   reduce defs --> 
+    action 'DO' (noprec):   reduce defs --> 
     action 'IF' (noprec):   reduce defs --> 
     action 'THEN' (noprec):   reduce defs --> 
     action 'ELSE' (noprec):   reduce defs --> 
@@ -912,6 +928,7 @@ state 16:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -964,6 +981,7 @@ state 17:
     action 'FROM' (noprec):   reduce prog --> defs defmain defs 'EOF'
     action 'LOOP' (noprec):   reduce prog --> defs defmain defs 'EOF'
     action 'UNTIL' (noprec):   reduce prog --> defs defmain defs 'EOF'
+    action 'DO' (noprec):   reduce prog --> defs defmain defs 'EOF'
     action 'IF' (noprec):   reduce prog --> defs defmain defs 'EOF'
     action 'THEN' (noprec):   reduce prog --> defs defmain defs 'EOF'
     action 'ELSE' (noprec):   reduce prog --> defs defmain defs 'EOF'
@@ -1016,6 +1034,7 @@ state 18:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1053,7 +1072,7 @@ state 18:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 34
+    goto defvar: 35
     goto defvars: 19
 
 state 19:
@@ -1062,20 +1081,21 @@ state 19:
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -1090,7 +1110,7 @@ state 19:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -1099,8 +1119,8 @@ state 19:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -1108,7 +1128,7 @@ state 19:
   immediate action: <none>
  gotos:
     goto stmt: 20
-    goto exp: 60
+    goto exp: 71
 
 state 20:
   items:
@@ -1117,20 +1137,21 @@ state 20:
 
   actions:
     action 'EOF' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'PROC' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'MAIN' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'UNTIL' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   reduce defmain --> 'MAIN' defvars stmt
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'ELSE' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'FI' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'LBRACKET' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'RBRACKET' (noprec):   reduce defmain --> 'MAIN' defvars stmt
@@ -1145,7 +1166,7 @@ state 20:
     action 'LESS' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'GREATER' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'EQUAL' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'GEQ' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'NOTEQ' (noprec):   reduce defmain --> 'MAIN' defvars stmt
@@ -1154,16 +1175,16 @@ state 20:
     action 'POWEREQUAL' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'SWITCH' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action 'TYPEINT' (noprec):   reduce defmain --> 'MAIN' defvars stmt
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action '#' (noprec):   reduce defmain --> 'MAIN' defvars stmt
     action '$$' (noprec):   reduce defmain --> 'MAIN' defvars stmt
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
 state 21:
   items:
@@ -1180,6 +1201,7 @@ state 21:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1232,6 +1254,7 @@ state 22:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1284,6 +1307,7 @@ state 23:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1321,7 +1345,7 @@ state 23:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 34
+    goto defvar: 35
     goto defvars: 24
 
 state 24:
@@ -1339,6 +1363,7 @@ state 24:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1382,20 +1407,21 @@ state 25:
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -1410,7 +1436,7 @@ state 25:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -1419,8 +1445,8 @@ state 25:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -1428,7 +1454,7 @@ state 25:
   immediate action: <none>
  gotos:
     goto stmt: 26
-    goto exp: 60
+    goto exp: 71
 
 state 26:
   items:
@@ -1437,20 +1463,21 @@ state 26:
 
   actions:
     action 'EOF' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'PROC' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'MAIN' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'UNTIL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'ELSE' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'FI' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'LBRACKET' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'RBRACKET' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
@@ -1465,7 +1492,7 @@ state 26:
     action 'LESS' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'GREATER' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'EQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'GEQ' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'NOTEQ' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
@@ -1474,16 +1501,16 @@ state 26:
     action 'POWEREQUAL' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'SWITCH' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action 'TYPEINT' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action '#' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
     action '$$' (noprec):   reduce def --> 'PROC' 'ID' 'LPAR' defvars 'RPAR' stmt
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
 state 27:
   items:
@@ -1501,6 +1528,7 @@ state 27:
     action 'FROM' (noprec):   reduce defs --> def
     action 'LOOP' (noprec):   reduce defs --> def
     action 'UNTIL' (noprec):   reduce defs --> def
+    action 'DO' (noprec):   reduce defs --> def
     action 'IF' (noprec):   reduce defs --> def
     action 'THEN' (noprec):   reduce defs --> def
     action 'ELSE' (noprec):   reduce defs --> def
@@ -1555,6 +1583,7 @@ state 28:
     action 'FROM' (noprec):   reduce defs --> def defs
     action 'LOOP' (noprec):   reduce defs --> def defs
     action 'UNTIL' (noprec):   reduce defs --> def defs
+    action 'DO' (noprec):   reduce defs --> def defs
     action 'IF' (noprec):   reduce defs --> def defs
     action 'THEN' (noprec):   reduce defs --> def defs
     action 'ELSE' (noprec):   reduce defs --> def defs
@@ -1596,6 +1625,7 @@ state 29:
   items:
     defvar -> type . 'ID'
     defvar -> type . 'ID' 'LBRACKET' exp 'RBRACKET'
+    defvar -> type . 'ID' 'LBRACKET' 'RBRACKET'
 
   actions:
     action 'EOF' (noprec):   error
@@ -1608,6 +1638,7 @@ state 29:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1649,6 +1680,7 @@ state 30:
   items:
     defvar -> type 'ID' . 
     defvar -> type 'ID' . 'LBRACKET' exp 'RBRACKET'
+    defvar -> type 'ID' . 'LBRACKET' 'RBRACKET'
 
   actions:
     action 'EOF' (noprec):   reduce defvar --> type 'ID'
@@ -1661,6 +1693,7 @@ state 30:
     action 'FROM' (noprec):   reduce defvar --> type 'ID'
     action 'LOOP' (noprec):   reduce defvar --> type 'ID'
     action 'UNTIL' (noprec):   reduce defvar --> type 'ID'
+    action 'DO' (noprec):   reduce defvar --> type 'ID'
     action 'IF' (noprec):   reduce defvar --> type 'ID'
     action 'THEN' (noprec):   reduce defvar --> type 'ID'
     action 'ELSE' (noprec):   reduce defvar --> type 'ID'
@@ -1701,6 +1734,7 @@ state 30:
 state 31:
   items:
     defvar -> type 'ID' 'LBRACKET' . exp 'RBRACKET'
+    defvar -> type 'ID' 'LBRACKET' . 'RBRACKET'
 
   actions:
     action 'EOF' (noprec):   error
@@ -1713,14 +1747,15 @@ state 31:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
-    action 'RBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   shift 34
     action 'COMMA' (noprec):   error
     action 'OR' (noprec):   error
     action 'AND' (noprec):   error
@@ -1732,7 +1767,7 @@ state 31:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -1741,8 +1776,8 @@ state 31:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
@@ -1779,6 +1814,7 @@ state 32:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1788,20 +1824,20 @@ state 32:
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   shift 33
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
@@ -1831,6 +1867,7 @@ state 33:
     action 'FROM' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'LOOP' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'UNTIL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
+    action 'DO' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'IF' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'THEN' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'ELSE' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' exp 'RBRACKET'
@@ -1870,6 +1907,59 @@ state 33:
 
 state 34:
   items:
+    defvar -> type 'ID' 'LBRACKET' 'RBRACKET' . 
+
+  actions:
+    action 'EOF' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LOCAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'DELOCAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'PROC' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'MAIN' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'CALL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'UNCALL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'FROM' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LOOP' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'UNTIL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'DO' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'IF' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'THEN' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'ELSE' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'FI' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LPAR' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'RPAR' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LBRACKET' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'RBRACKET' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'COMMA' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'OR' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'AND' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'PLUS' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'MINUS' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'TIMES' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'DIVIDE' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'MOD' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LESS' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'GREATER' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'EQUAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'NOT' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'LEQ' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'GEQ' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'NOTEQ' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'PLUSEQUAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'MINUSEQUAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'POWEREQUAL' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'SWITCH' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'TYPEINT' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'INT' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'ID' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action 'error' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action '#' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+    action '$$' (noprec):   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+
+  immediate action:   reduce defvar --> type 'ID' 'LBRACKET' 'RBRACKET'
+ gotos:
+
+state 35:
+  items:
     defvars -> defvar . 'COMMA' defvars
     defvars -> defvar . defvars
     defvars -> defvar . 
@@ -1885,6 +1975,7 @@ state 34:
     action 'FROM' (noprec):   reduce defvars --> defvar
     action 'LOOP' (noprec):   reduce defvars --> defvar
     action 'UNTIL' (noprec):   reduce defvars --> defvar
+    action 'DO' (noprec):   reduce defvars --> defvar
     action 'IF' (noprec):   reduce defvars --> defvar
     action 'THEN' (noprec):   reduce defvars --> defvar
     action 'ELSE' (noprec):   reduce defvars --> defvar
@@ -1893,7 +1984,7 @@ state 34:
     action 'RPAR' (noprec):   reduce defvars --> defvar
     action 'LBRACKET' (noprec):   reduce defvars --> defvar
     action 'RBRACKET' (noprec):   reduce defvars --> defvar
-    action 'COMMA' (noprec):   shift 35
+    action 'COMMA' (noprec):   shift 36
     action 'OR' (noprec):   reduce defvars --> defvar
     action 'AND' (noprec):   reduce defvars --> defvar
     action 'PLUS' (noprec):   reduce defvars --> defvar
@@ -1922,10 +2013,10 @@ state 34:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 34
-    goto defvars: 37
+    goto defvar: 35
+    goto defvars: 38
 
-state 35:
+state 36:
   items:
     defvars -> defvar 'COMMA' . defvars
 
@@ -1940,6 +2031,7 @@ state 35:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -1977,10 +2069,10 @@ state 35:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 34
-    goto defvars: 36
+    goto defvar: 35
+    goto defvars: 37
 
-state 36:
+state 37:
   items:
     defvars -> defvar 'COMMA' defvars . 
 
@@ -1995,6 +2087,7 @@ state 36:
     action 'FROM' (noprec):   reduce defvars --> defvar 'COMMA' defvars
     action 'LOOP' (noprec):   reduce defvars --> defvar 'COMMA' defvars
     action 'UNTIL' (noprec):   reduce defvars --> defvar 'COMMA' defvars
+    action 'DO' (noprec):   reduce defvars --> defvar 'COMMA' defvars
     action 'IF' (noprec):   reduce defvars --> defvar 'COMMA' defvars
     action 'THEN' (noprec):   reduce defvars --> defvar 'COMMA' defvars
     action 'ELSE' (noprec):   reduce defvars --> defvar 'COMMA' defvars
@@ -2032,7 +2125,7 @@ state 36:
   immediate action:   reduce defvars --> defvar 'COMMA' defvars
  gotos:
 
-state 37:
+state 38:
   items:
     defvars -> defvar defvars . 
 
@@ -2047,6 +2140,7 @@ state 37:
     action 'FROM' (noprec):   reduce defvars --> defvar defvars
     action 'LOOP' (noprec):   reduce defvars --> defvar defvars
     action 'UNTIL' (noprec):   reduce defvars --> defvar defvars
+    action 'DO' (noprec):   reduce defvars --> defvar defvars
     action 'IF' (noprec):   reduce defvars --> defvar defvars
     action 'THEN' (noprec):   reduce defvars --> defvar defvars
     action 'ELSE' (noprec):   reduce defvars --> defvar defvars
@@ -2084,7 +2178,7 @@ state 37:
   immediate action:   reduce defvars --> defvar defvars
  gotos:
 
-state 38:
+state 39:
   items:
     proc -> 'ID' . 'LPAR' ids 'RPAR'
 
@@ -2099,11 +2193,12 @@ state 38:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 39
+    action 'LPAR' (noprec):   shift 40
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2136,7 +2231,7 @@ state 38:
   immediate action: <none>
  gotos:
 
-state 39:
+state 40:
   items:
     proc -> 'ID' 'LPAR' . ids 'RPAR'
 
@@ -2151,6 +2246,7 @@ state 39:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -2187,9 +2283,9 @@ state 39:
 
   immediate action: <none>
  gotos:
-    goto ids: 40
+    goto ids: 41
 
-state 40:
+state 41:
   items:
     proc -> 'ID' 'LPAR' ids . 'RPAR'
 
@@ -2204,12 +2300,13 @@ state 40:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
     action 'LPAR' (noprec):   error
-    action 'RPAR' (noprec):   shift 41
+    action 'RPAR' (noprec):   shift 42
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
@@ -2241,7 +2338,7 @@ state 40:
   immediate action: <none>
  gotos:
 
-state 41:
+state 42:
   items:
     proc -> 'ID' 'LPAR' ids 'RPAR' . 
 
@@ -2256,6 +2353,7 @@ state 41:
     action 'FROM' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
     action 'LOOP' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
     action 'UNTIL' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
+    action 'DO' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
     action 'IF' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
     action 'THEN' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
     action 'ELSE' (noprec):   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
@@ -2293,7 +2391,7 @@ state 41:
   immediate action:   reduce proc --> 'ID' 'LPAR' ids 'RPAR'
  gotos:
 
-state 42:
+state 43:
   items:
     stmt -> 'CALL' . proc
 
@@ -2308,6 +2406,7 @@ state 42:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -2337,16 +2436,16 @@ state 42:
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
     action 'INT' (noprec):   error
-    action 'ID' (noprec):   shift 38
+    action 'ID' (noprec):   shift 39
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto proc: 43
+    goto proc: 44
 
-state 43:
+state 44:
   items:
     stmt -> 'CALL' proc . 
 
@@ -2361,6 +2460,7 @@ state 43:
     action 'FROM' (noprec):   reduce stmt --> 'CALL' proc
     action 'LOOP' (noprec):   reduce stmt --> 'CALL' proc
     action 'UNTIL' (noprec):   reduce stmt --> 'CALL' proc
+    action 'DO' (noprec):   reduce stmt --> 'CALL' proc
     action 'IF' (noprec):   reduce stmt --> 'CALL' proc
     action 'THEN' (noprec):   reduce stmt --> 'CALL' proc
     action 'ELSE' (noprec):   reduce stmt --> 'CALL' proc
@@ -2398,7 +2498,7 @@ state 43:
   immediate action:   reduce stmt --> 'CALL' proc
  gotos:
 
-state 44:
+state 45:
   items:
     stmt -> 'UNCALL' . proc
 
@@ -2413,6 +2513,7 @@ state 44:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -2442,16 +2543,16 @@ state 44:
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
     action 'INT' (noprec):   error
-    action 'ID' (noprec):   shift 38
+    action 'ID' (noprec):   shift 39
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto proc: 45
+    goto proc: 46
 
-state 45:
+state 46:
   items:
     stmt -> 'UNCALL' proc . 
 
@@ -2466,6 +2567,7 @@ state 45:
     action 'FROM' (noprec):   reduce stmt --> 'UNCALL' proc
     action 'LOOP' (noprec):   reduce stmt --> 'UNCALL' proc
     action 'UNTIL' (noprec):   reduce stmt --> 'UNCALL' proc
+    action 'DO' (noprec):   reduce stmt --> 'UNCALL' proc
     action 'IF' (noprec):   reduce stmt --> 'UNCALL' proc
     action 'THEN' (noprec):   reduce stmt --> 'UNCALL' proc
     action 'ELSE' (noprec):   reduce stmt --> 'UNCALL' proc
@@ -2503,9 +2605,10 @@ state 45:
   immediate action:   reduce stmt --> 'UNCALL' proc
  gotos:
 
-state 46:
+state 47:
   items:
     stmt -> 'IF' . exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    stmt -> 'IF' . exp 'THEN' stmt 'FI' exp
 
   actions:
     action 'EOF' (noprec):   error
@@ -2518,11 +2621,12 @@ state 46:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2537,7 +2641,7 @@ state 46:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2546,19 +2650,20 @@ state 46:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 47
+    goto exp: 48
 
-state 47:
+state 48:
   items:
     stmt -> 'IF' exp . 'THEN' stmt 'ELSE' stmt 'FI' exp
+    stmt -> 'IF' exp . 'THEN' stmt 'FI' exp
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
     exp -> exp . 'MINUS' exp
@@ -2584,8 +2689,9 @@ state 47:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
-    action 'THEN' (noprec):   shift 48
+    action 'THEN' (noprec):   shift 49
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
     action 'LPAR' (noprec):   error
@@ -2593,20 +2699,20 @@ state 47:
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
@@ -2621,26 +2727,28 @@ state 47:
   immediate action: <none>
  gotos:
 
-state 48:
+state 49:
   items:
     stmt -> 'IF' exp 'THEN' . stmt 'ELSE' stmt 'FI' exp
+    stmt -> 'IF' exp 'THEN' . stmt 'FI' exp
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2655,7 +2763,7 @@ state 48:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2664,38 +2772,40 @@ state 48:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 49
-    goto exp: 60
+    goto stmt: 50
+    goto exp: 71
 
-state 49:
+state 50:
   items:
     stmt -> 'IF' exp 'THEN' stmt . 'ELSE' stmt 'FI' exp
+    stmt -> 'IF' exp 'THEN' stmt . 'FI' exp
     stmt -> stmt . stmt
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
-    action 'ELSE' (noprec):   shift 50
-    action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'ELSE' (noprec):   shift 51
+    action 'FI' (noprec):   shift 55
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2710,7 +2820,7 @@ state 49:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2719,37 +2829,38 @@ state 49:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
-state 50:
+state 51:
   items:
     stmt -> 'IF' exp 'THEN' stmt 'ELSE' . stmt 'FI' exp
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2764,7 +2875,7 @@ state 50:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2773,38 +2884,39 @@ state 50:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 51
-    goto exp: 60
+    goto stmt: 52
+    goto exp: 71
 
-state 51:
+state 52:
   items:
     stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt . 'FI' exp
     stmt -> stmt . stmt
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
-    action 'FI' (noprec):   shift 52
-    action 'LPAR' (noprec):   shift 106
+    action 'FI' (noprec):   shift 53
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2819,7 +2931,7 @@ state 51:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2828,18 +2940,18 @@ state 51:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
-state 52:
+state 53:
   items:
     stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' . exp
 
@@ -2854,11 +2966,12 @@ state 52:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2873,7 +2986,7 @@ state 52:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -2882,17 +2995,17 @@ state 52:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 53
+    goto exp: 54
 
-state 53:
+state 54:
   items:
     stmt -> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp . 
     exp -> exp . 'NOTEQ' exp
@@ -2920,6 +3033,7 @@ state 53:
     action 'FROM' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'LOOP' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'UNTIL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
+    action 'DO' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'IF' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'THEN' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'ELSE' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
@@ -2929,20 +3043,20 @@ state 53:
     action 'LBRACKET' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'RBRACKET' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'COMMA' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'MINUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
     action 'POWEREQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'ELSE' stmt 'FI' exp
@@ -2957,9 +3071,9 @@ state 53:
   immediate action: <none>
  gotos:
 
-state 54:
+state 55:
   items:
-    stmt -> 'FROM' . exp 'LOOP' stmt 'UNTIL' exp
+    stmt -> 'IF' exp 'THEN' stmt 'FI' . exp
 
   actions:
     action 'EOF' (noprec):   error
@@ -2972,11 +3086,12 @@ state 54:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -2991,7 +3106,7 @@ state 54:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3000,19 +3115,143 @@ state 54:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 55
+    goto exp: 56
 
-state 55:
+state 56:
   items:
+    stmt -> 'IF' exp 'THEN' stmt 'FI' exp . 
+    exp -> exp . 'NOTEQ' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LEQ' exp
+    exp -> exp . 'GEQ' exp
+    exp -> exp . 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'PROC' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'CALL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'FROM' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'DO' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'IF' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'THEN' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'FI' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'LBRACKET' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'RBRACKET' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
+    action 'NOT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'INT' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'ID' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action 'error' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action '#' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+    action '$$' (noprec):   reduce stmt --> 'IF' exp 'THEN' stmt 'FI' exp
+
+  immediate action: <none>
+ gotos:
+
+state 57:
+  items:
+    stmt -> 'FROM' . exp 'DO' stmt 'UNTIL' exp
+    stmt -> 'FROM' . exp 'LOOP' stmt 'UNTIL' exp
+    stmt -> 'FROM' . exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 58
+
+state 58:
+  items:
+    stmt -> 'FROM' exp . 'DO' stmt 'UNTIL' exp
     stmt -> 'FROM' exp . 'LOOP' stmt 'UNTIL' exp
+    stmt -> 'FROM' exp . 'DO' stmt 'LOOP' stmt 'UNTIL' exp
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
     exp -> exp . 'MINUS' exp
@@ -3036,8 +3275,9 @@ state 55:
     action 'CALL' (noprec):   error
     action 'UNCALL' (noprec):   error
     action 'FROM' (noprec):   error
-    action 'LOOP' (noprec):   shift 56
+    action 'LOOP' (noprec):   shift 63
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   shift 59
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3047,20 +3287,20 @@ state 55:
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
@@ -3075,26 +3315,28 @@ state 55:
   immediate action: <none>
  gotos:
 
-state 56:
+state 59:
   items:
-    stmt -> 'FROM' exp 'LOOP' . stmt 'UNTIL' exp
+    stmt -> 'FROM' exp 'DO' . stmt 'UNTIL' exp
+    stmt -> 'FROM' exp 'DO' . stmt 'LOOP' stmt 'UNTIL' exp
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3109,7 +3351,7 @@ state 56:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3118,38 +3360,271 @@ state 56:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 57
-    goto exp: 60
+    goto stmt: 60
+    goto exp: 71
 
-state 57:
+state 60:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt . 'UNTIL' exp
+    stmt -> 'FROM' exp 'DO' stmt . 'LOOP' stmt 'UNTIL' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 73
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
+    action 'LOOP' (noprec):   shift 67
+    action 'UNTIL' (noprec):   shift 61
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 82
+    goto exp: 71
+
+state 61:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'UNTIL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 62
+
+state 62:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'UNTIL' exp . 
+    exp -> exp . 'NOTEQ' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LEQ' exp
+    exp -> exp . 'GEQ' exp
+    exp -> exp . 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'PROC' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'CALL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'FROM' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'DO' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'IF' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'THEN' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'FI' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'LBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'RBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
+    action 'NOT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'INT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'ID' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action 'error' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action '#' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+    action '$$' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'UNTIL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 63:
+  items:
+    stmt -> 'FROM' exp 'LOOP' . stmt 'UNTIL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 73
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 64
+    goto exp: 71
+
+state 64:
   items:
     stmt -> 'FROM' exp 'LOOP' stmt . 'UNTIL' exp
     stmt -> stmt . stmt
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
-    action 'UNTIL' (noprec):   shift 58
-    action 'IF' (noprec):   shift 46
+    action 'UNTIL' (noprec):   shift 65
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3164,7 +3639,7 @@ state 57:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3173,18 +3648,18 @@ state 57:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
-state 58:
+state 65:
   items:
     stmt -> 'FROM' exp 'LOOP' stmt 'UNTIL' . exp
 
@@ -3199,11 +3674,12 @@ state 58:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3218,7 +3694,7 @@ state 58:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3227,17 +3703,17 @@ state 58:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 59
+    goto exp: 66
 
-state 59:
+state 66:
   items:
     stmt -> 'FROM' exp 'LOOP' stmt 'UNTIL' exp . 
     exp -> exp . 'NOTEQ' exp
@@ -3265,6 +3741,7 @@ state 59:
     action 'FROM' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'LOOP' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'UNTIL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
+    action 'DO' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'IF' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'THEN' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'ELSE' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
@@ -3274,20 +3751,20 @@ state 59:
     action 'LBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'RBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'COMMA' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'MINUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
     action 'POWEREQUAL' (noprec):   reduce stmt --> 'FROM' exp 'LOOP' stmt 'UNTIL' exp
@@ -3302,7 +3779,238 @@ state 59:
   immediate action: <none>
  gotos:
 
-state 60:
+state 67:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'LOOP' . stmt 'UNTIL' exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 73
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 68
+    goto exp: 71
+
+state 68:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'LOOP' stmt . 'UNTIL' exp
+    stmt -> stmt . stmt
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   shift 73
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   shift 69
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto stmt: 82
+    goto exp: 71
+
+state 69:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' . exp
+
+  actions:
+    action 'EOF' (noprec):   error
+    action 'LOCAL' (noprec):   error
+    action 'DELOCAL' (noprec):   error
+    action 'PROC' (noprec):   error
+    action 'MAIN' (noprec):   error
+    action 'CALL' (noprec):   error
+    action 'UNCALL' (noprec):   error
+    action 'FROM' (noprec):   error
+    action 'LOOP' (noprec):   error
+    action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   error
+    action 'THEN' (noprec):   error
+    action 'ELSE' (noprec):   error
+    action 'FI' (noprec):   error
+    action 'LPAR' (noprec):   shift 117
+    action 'RPAR' (noprec):   error
+    action 'LBRACKET' (noprec):   error
+    action 'RBRACKET' (noprec):   error
+    action 'COMMA' (noprec):   error
+    action 'OR' (noprec):   error
+    action 'AND' (noprec):   error
+    action 'PLUS' (noprec):   error
+    action 'MINUS' (noprec):   error
+    action 'TIMES' (noprec):   error
+    action 'DIVIDE' (noprec):   error
+    action 'MOD' (noprec):   error
+    action 'LESS' (noprec):   error
+    action 'GREATER' (noprec):   error
+    action 'EQUAL' (noprec):   error
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (noprec):   error
+    action 'GEQ' (noprec):   error
+    action 'NOTEQ' (noprec):   error
+    action 'PLUSEQUAL' (noprec):   error
+    action 'MINUSEQUAL' (noprec):   error
+    action 'POWEREQUAL' (noprec):   error
+    action 'SWITCH' (noprec):   error
+    action 'TYPEINT' (noprec):   error
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
+    action 'error' (noprec):   error
+    action '#' (noprec):   error
+    action '$$' (noprec):   error
+
+  immediate action: <none>
+ gotos:
+    goto exp: 70
+
+state 70:
+  items:
+    stmt -> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp . 
+    exp -> exp . 'NOTEQ' exp
+    exp -> exp . 'PLUS' exp
+    exp -> exp . 'MINUS' exp
+    exp -> exp . 'TIMES' exp
+    exp -> exp . 'DIVIDE' exp
+    exp -> exp . 'MOD' exp
+    exp -> exp . 'LEQ' exp
+    exp -> exp . 'GEQ' exp
+    exp -> exp . 'EQUAL' exp
+    exp -> exp . 'LESS' exp
+    exp -> exp . 'GREATER' exp
+    exp -> exp . 'AND' exp
+    exp -> exp . 'OR' exp
+
+  actions:
+    action 'EOF' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'LOCAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'DELOCAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'PROC' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'MAIN' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'CALL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'UNCALL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'FROM' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'LOOP' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'UNTIL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'DO' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'IF' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'THEN' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'ELSE' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'FI' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'LPAR' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'RPAR' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'LBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'RBRACKET' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'COMMA' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
+    action 'NOT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
+    action 'PLUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'MINUSEQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'POWEREQUAL' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'SWITCH' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'TYPEINT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'INT' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'ID' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action 'error' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action '#' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+    action '$$' (noprec):   reduce stmt --> 'FROM' exp 'DO' stmt 'LOOP' stmt 'UNTIL' exp
+
+  immediate action: <none>
+ gotos:
+
+state 71:
   items:
     stmt -> exp . opr
     exp -> exp . 'NOTEQ' exp
@@ -3330,6 +4038,7 @@ state 60:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3339,20 +4048,20 @@ state 60:
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit right 9994):   shift 5
     action 'MINUSEQUAL' (explicit right 9994):   shift 7
     action 'POWEREQUAL' (explicit right 9994):   shift 9
@@ -3366,9 +4075,9 @@ state 60:
 
   immediate action: <none>
  gotos:
-    goto opr: 61
+    goto opr: 72
 
-state 61:
+state 72:
   items:
     stmt -> exp opr . 
 
@@ -3383,6 +4092,7 @@ state 61:
     action 'FROM' (noprec):   reduce stmt --> exp opr
     action 'LOOP' (noprec):   reduce stmt --> exp opr
     action 'UNTIL' (noprec):   reduce stmt --> exp opr
+    action 'DO' (noprec):   reduce stmt --> exp opr
     action 'IF' (noprec):   reduce stmt --> exp opr
     action 'THEN' (noprec):   reduce stmt --> exp opr
     action 'ELSE' (noprec):   reduce stmt --> exp opr
@@ -3420,7 +4130,7 @@ state 61:
   immediate action:   reduce stmt --> exp opr
  gotos:
 
-state 62:
+state 73:
   items:
     stmt -> 'LOCAL' . defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
 
@@ -3435,6 +4145,7 @@ state 62:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3472,9 +4183,9 @@ state 62:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 63
+    goto defvar: 74
 
-state 63:
+state 74:
   items:
     stmt -> 'LOCAL' defvar . 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
 
@@ -3489,6 +4200,7 @@ state 63:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3507,7 +4219,7 @@ state 63:
     action 'MOD' (noprec):   error
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
-    action 'EQUAL' (explicit left 9997):   shift 64
+    action 'EQUAL' (explicit left 9997):   shift 75
     action 'NOT' (noprec):   error
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
@@ -3526,7 +4238,7 @@ state 63:
   immediate action: <none>
  gotos:
 
-state 64:
+state 75:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' . exp stmt 'DELOCAL' defvar 'EQUAL' exp
 
@@ -3541,11 +4253,12 @@ state 64:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3560,7 +4273,7 @@ state 64:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3569,17 +4282,17 @@ state 64:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 65
+    goto exp: 76
 
-state 65:
+state 76:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp . stmt 'DELOCAL' defvar 'EQUAL' exp
     exp -> exp . 'NOTEQ' exp
@@ -3598,75 +4311,77 @@ state 65:
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   error
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
-    action 'NOT' (explicit right 10000):   shift 77
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
+    action 'NOT' (explicit right 10000):   shift 88
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 66
-    goto exp: 60
+    goto stmt: 77
+    goto exp: 71
 
-state 66:
+state 77:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp stmt . 'DELOCAL' defvar 'EQUAL' exp
     stmt -> stmt . stmt
 
   actions:
     action 'EOF' (noprec):   error
-    action 'LOCAL' (noprec):   shift 62
-    action 'DELOCAL' (noprec):   shift 67
+    action 'LOCAL' (noprec):   shift 73
+    action 'DELOCAL' (noprec):   shift 78
     action 'PROC' (noprec):   error
     action 'MAIN' (noprec):   error
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   error
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3681,7 +4396,7 @@ state 66:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3690,18 +4405,18 @@ state 66:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
-state 67:
+state 78:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' . defvar 'EQUAL' exp
 
@@ -3716,6 +4431,7 @@ state 67:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3753,9 +4469,9 @@ state 67:
   immediate action: <none>
  gotos:
     goto type: 29
-    goto defvar: 68
+    goto defvar: 79
 
-state 68:
+state 79:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar . 'EQUAL' exp
 
@@ -3770,6 +4486,7 @@ state 68:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -3788,7 +4505,7 @@ state 68:
     action 'MOD' (noprec):   error
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
-    action 'EQUAL' (explicit left 9997):   shift 69
+    action 'EQUAL' (explicit left 9997):   shift 80
     action 'NOT' (noprec):   error
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
@@ -3807,7 +4524,7 @@ state 68:
   immediate action: <none>
  gotos:
 
-state 69:
+state 80:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' . exp
 
@@ -3822,11 +4539,12 @@ state 69:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -3841,7 +4559,7 @@ state 69:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -3850,17 +4568,17 @@ state 69:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 70
+    goto exp: 81
 
-state 70:
+state 81:
   items:
     stmt -> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp . 
     exp -> exp . 'NOTEQ' exp
@@ -3888,6 +4606,7 @@ state 70:
     action 'FROM' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'LOOP' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'UNTIL' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
+    action 'DO' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'IF' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'THEN' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'ELSE' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
@@ -3897,20 +4616,20 @@ state 70:
     action 'LBRACKET' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'RBRACKET' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'COMMA' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'MINUSEQUAL' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
     action 'POWEREQUAL' (explicit left 9997):   reduce stmt --> 'LOCAL' defvar 'EQUAL' exp stmt 'DELOCAL' defvar 'EQUAL' exp
@@ -3925,27 +4644,28 @@ state 70:
   immediate action: <none>
  gotos:
 
-state 71:
+state 82:
   items:
     stmt -> stmt . stmt
     stmt -> stmt stmt . 
 
   actions:
     action 'EOF' (noprec):   reduce stmt --> stmt stmt
-    action 'LOCAL' (noprec):   shift 62
+    action 'LOCAL' (noprec):   shift 73
     action 'DELOCAL' (noprec):   reduce stmt --> stmt stmt
     action 'PROC' (noprec):   reduce stmt --> stmt stmt
     action 'MAIN' (noprec):   reduce stmt --> stmt stmt
-    action 'CALL' (noprec):   shift 42
-    action 'UNCALL' (noprec):   shift 44
-    action 'FROM' (noprec):   shift 54
+    action 'CALL' (noprec):   shift 43
+    action 'UNCALL' (noprec):   shift 45
+    action 'FROM' (noprec):   shift 57
     action 'LOOP' (noprec):   reduce stmt --> stmt stmt
     action 'UNTIL' (noprec):   reduce stmt --> stmt stmt
-    action 'IF' (noprec):   shift 46
+    action 'DO' (noprec):   reduce stmt --> stmt stmt
+    action 'IF' (noprec):   shift 47
     action 'THEN' (noprec):   reduce stmt --> stmt stmt
     action 'ELSE' (noprec):   reduce stmt --> stmt stmt
     action 'FI' (noprec):   reduce stmt --> stmt stmt
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   reduce stmt --> stmt stmt
     action 'LBRACKET' (noprec):   reduce stmt --> stmt stmt
     action 'RBRACKET' (noprec):   reduce stmt --> stmt stmt
@@ -3960,7 +4680,7 @@ state 71:
     action 'LESS' (noprec):   reduce stmt --> stmt stmt
     action 'GREATER' (noprec):   reduce stmt --> stmt stmt
     action 'EQUAL' (noprec):   reduce stmt --> stmt stmt
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   reduce stmt --> stmt stmt
     action 'GEQ' (noprec):   reduce stmt --> stmt stmt
     action 'NOTEQ' (noprec):   reduce stmt --> stmt stmt
@@ -3969,18 +4689,18 @@ state 71:
     action 'POWEREQUAL' (noprec):   reduce stmt --> stmt stmt
     action 'SWITCH' (noprec):   reduce stmt --> stmt stmt
     action 'TYPEINT' (noprec):   reduce stmt --> stmt stmt
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   reduce stmt --> stmt stmt
     action '#' (noprec):   reduce stmt --> stmt stmt
     action '$$' (noprec):   reduce stmt --> stmt stmt
 
   immediate action: <none>
  gotos:
-    goto stmt: 71
-    goto exp: 60
+    goto stmt: 82
+    goto exp: 71
 
-state 72:
+state 83:
   items:
     exp -> 'INT' . 
 
@@ -3995,6 +4715,7 @@ state 72:
     action 'FROM' (noprec):   reduce exp --> 'INT'
     action 'LOOP' (noprec):   reduce exp --> 'INT'
     action 'UNTIL' (noprec):   reduce exp --> 'INT'
+    action 'DO' (noprec):   reduce exp --> 'INT'
     action 'IF' (noprec):   reduce exp --> 'INT'
     action 'THEN' (noprec):   reduce exp --> 'INT'
     action 'ELSE' (noprec):   reduce exp --> 'INT'
@@ -4032,7 +4753,7 @@ state 72:
   immediate action:   reduce exp --> 'INT'
  gotos:
 
-state 73:
+state 84:
   items:
     exp -> 'ID' . 
     exp -> 'ID' . 'LBRACKET' exp 'RBRACKET'
@@ -4048,13 +4769,14 @@ state 73:
     action 'FROM' (noprec):   reduce exp --> 'ID'
     action 'LOOP' (noprec):   reduce exp --> 'ID'
     action 'UNTIL' (noprec):   reduce exp --> 'ID'
+    action 'DO' (noprec):   reduce exp --> 'ID'
     action 'IF' (noprec):   reduce exp --> 'ID'
     action 'THEN' (noprec):   reduce exp --> 'ID'
     action 'ELSE' (noprec):   reduce exp --> 'ID'
     action 'FI' (noprec):   reduce exp --> 'ID'
     action 'LPAR' (noprec):   reduce exp --> 'ID'
     action 'RPAR' (noprec):   reduce exp --> 'ID'
-    action 'LBRACKET' (noprec):   shift 74
+    action 'LBRACKET' (noprec):   shift 85
     action 'RBRACKET' (noprec):   reduce exp --> 'ID'
     action 'COMMA' (noprec):   reduce exp --> 'ID'
     action 'OR' (noprec):   reduce exp --> 'ID'
@@ -4085,7 +4807,7 @@ state 73:
   immediate action: <none>
  gotos:
 
-state 74:
+state 85:
   items:
     exp -> 'ID' 'LBRACKET' . exp 'RBRACKET'
 
@@ -4100,11 +4822,12 @@ state 74:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -4119,7 +4842,7 @@ state 74:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -4128,17 +4851,17 @@ state 74:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 75
+    goto exp: 86
 
-state 75:
+state 86:
   items:
     exp -> 'ID' 'LBRACKET' exp . 'RBRACKET'
     exp -> exp . 'NOTEQ' exp
@@ -4166,6 +4889,7 @@ state 75:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
@@ -4173,22 +4897,22 @@ state 75:
     action 'LPAR' (noprec):   error
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
-    action 'RBRACKET' (noprec):   shift 76
+    action 'RBRACKET' (noprec):   shift 87
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
@@ -4203,7 +4927,7 @@ state 75:
   immediate action: <none>
  gotos:
 
-state 76:
+state 87:
   items:
     exp -> 'ID' 'LBRACKET' exp 'RBRACKET' . 
 
@@ -4218,6 +4942,7 @@ state 76:
     action 'FROM' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'LOOP' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'UNTIL' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
+    action 'DO' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'IF' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'THEN' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
     action 'ELSE' (noprec):   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
@@ -4255,7 +4980,7 @@ state 76:
   immediate action:   reduce exp --> 'ID' 'LBRACKET' exp 'RBRACKET'
  gotos:
 
-state 77:
+state 88:
   items:
     exp -> 'NOT' . exp
 
@@ -4270,11 +4995,12 @@ state 77:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -4289,7 +5015,7 @@ state 77:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -4298,17 +5024,17 @@ state 77:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 78
+    goto exp: 89
 
-state 78:
+state 89:
   items:
     exp -> 'NOT' exp . 
     exp -> exp . 'NOTEQ' exp
@@ -4336,6 +5062,7 @@ state 78:
     action 'FROM' (explicit right 10000):   reduce exp --> 'NOT' exp
     action 'LOOP' (explicit right 10000):   reduce exp --> 'NOT' exp
     action 'UNTIL' (explicit right 10000):   reduce exp --> 'NOT' exp
+    action 'DO' (explicit right 10000):   reduce exp --> 'NOT' exp
     action 'IF' (explicit right 10000):   reduce exp --> 'NOT' exp
     action 'THEN' (explicit right 10000):   reduce exp --> 'NOT' exp
     action 'ELSE' (explicit right 10000):   reduce exp --> 'NOT' exp
@@ -4373,7 +5100,7 @@ state 78:
   immediate action: <none>
  gotos:
 
-state 79:
+state 90:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp 'NOTEQ' exp . 
@@ -4401,6 +5128,7 @@ state 79:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
@@ -4412,11 +5140,11 @@ state 79:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'NOTEQ' exp
@@ -4438,7 +5166,7 @@ state 79:
   immediate action: <none>
  gotos:
 
-state 80:
+state 91:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4466,6 +5194,7 @@ state 80:
     action 'FROM' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'LOOP' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'UNTIL' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
+    action 'DO' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'IF' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'THEN' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'ELSE' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
@@ -4479,9 +5208,9 @@ state 80:
     action 'AND' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'PLUS' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'MINUS' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'GREATER' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
     action 'EQUAL' (explicit left 9998):   reduce exp --> exp 'PLUS' exp
@@ -4503,7 +5232,7 @@ state 80:
   immediate action: <none>
  gotos:
 
-state 81:
+state 92:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4531,6 +5260,7 @@ state 81:
     action 'FROM' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'LOOP' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'UNTIL' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
+    action 'DO' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'IF' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'THEN' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'ELSE' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
@@ -4544,9 +5274,9 @@ state 81:
     action 'AND' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'PLUS' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'MINUS' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'GREATER' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
     action 'EQUAL' (explicit left 9998):   reduce exp --> exp 'MINUS' exp
@@ -4568,7 +5298,7 @@ state 81:
   immediate action: <none>
  gotos:
 
-state 82:
+state 93:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4596,6 +5326,7 @@ state 82:
     action 'FROM' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
     action 'LOOP' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
     action 'UNTIL' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
+    action 'DO' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
     action 'IF' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
     action 'THEN' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
     action 'ELSE' (explicit left 9999):   reduce exp --> exp 'TIMES' exp
@@ -4633,7 +5364,7 @@ state 82:
   immediate action: <none>
  gotos:
 
-state 83:
+state 94:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4661,6 +5392,7 @@ state 83:
     action 'FROM' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
     action 'LOOP' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
     action 'UNTIL' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
+    action 'DO' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
     action 'IF' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
     action 'THEN' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
     action 'ELSE' (explicit left 9999):   reduce exp --> exp 'DIVIDE' exp
@@ -4698,7 +5430,7 @@ state 83:
   immediate action: <none>
  gotos:
 
-state 84:
+state 95:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4726,6 +5458,7 @@ state 84:
     action 'FROM' (explicit left 9999):   reduce exp --> exp 'MOD' exp
     action 'LOOP' (explicit left 9999):   reduce exp --> exp 'MOD' exp
     action 'UNTIL' (explicit left 9999):   reduce exp --> exp 'MOD' exp
+    action 'DO' (explicit left 9999):   reduce exp --> exp 'MOD' exp
     action 'IF' (explicit left 9999):   reduce exp --> exp 'MOD' exp
     action 'THEN' (explicit left 9999):   reduce exp --> exp 'MOD' exp
     action 'ELSE' (explicit left 9999):   reduce exp --> exp 'MOD' exp
@@ -4763,7 +5496,7 @@ state 84:
   immediate action: <none>
  gotos:
 
-state 85:
+state 96:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4791,6 +5524,7 @@ state 85:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
@@ -4802,11 +5536,11 @@ state 85:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'LEQ' exp
@@ -4828,7 +5562,7 @@ state 85:
   immediate action: <none>
  gotos:
 
-state 86:
+state 97:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4856,6 +5590,7 @@ state 86:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
@@ -4867,11 +5602,11 @@ state 86:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'GEQ' exp
@@ -4893,7 +5628,7 @@ state 86:
   immediate action: <none>
  gotos:
 
-state 87:
+state 98:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4921,6 +5656,7 @@ state 87:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
@@ -4932,11 +5668,11 @@ state 87:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'EQUAL' exp
@@ -4958,7 +5694,7 @@ state 87:
   immediate action: <none>
  gotos:
 
-state 88:
+state 99:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -4986,6 +5722,7 @@ state 88:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'LESS' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'LESS' exp
@@ -4997,11 +5734,11 @@ state 88:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'LESS' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'LESS' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'LESS' exp
@@ -5023,7 +5760,7 @@ state 88:
   immediate action: <none>
  gotos:
 
-state 89:
+state 100:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -5051,6 +5788,7 @@ state 89:
     action 'FROM' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'LOOP' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'UNTIL' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
+    action 'DO' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'IF' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'THEN' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'ELSE' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
@@ -5062,11 +5800,11 @@ state 89:
     action 'COMMA' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'OR' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'AND' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
     action 'LESS' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'GREATER' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
     action 'EQUAL' (explicit left 9997):   reduce exp --> exp 'GREATER' exp
@@ -5088,7 +5826,7 @@ state 89:
   immediate action: <none>
  gotos:
 
-state 90:
+state 101:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -5116,6 +5854,7 @@ state 90:
     action 'FROM' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'LOOP' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'UNTIL' (explicit left 9996):   reduce exp --> exp 'AND' exp
+    action 'DO' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'IF' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'THEN' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'ELSE' (explicit left 9996):   reduce exp --> exp 'AND' exp
@@ -5127,18 +5866,18 @@ state 90:
     action 'COMMA' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'OR' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'AND' (explicit left 9996):   reduce exp --> exp 'AND' exp
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit left 9996):   reduce exp --> exp 'AND' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'MINUSEQUAL' (explicit left 9996):   reduce exp --> exp 'AND' exp
     action 'POWEREQUAL' (explicit left 9996):   reduce exp --> exp 'AND' exp
@@ -5153,7 +5892,7 @@ state 90:
   immediate action: <none>
  gotos:
 
-state 91:
+state 102:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -5181,6 +5920,7 @@ state 91:
     action 'FROM' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'LOOP' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'UNTIL' (explicit left 9995):   reduce exp --> exp 'OR' exp
+    action 'DO' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'IF' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'THEN' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'ELSE' (explicit left 9995):   reduce exp --> exp 'OR' exp
@@ -5191,19 +5931,19 @@ state 91:
     action 'RBRACKET' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'COMMA' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'OR' (explicit left 9995):   reduce exp --> exp 'OR' exp
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (explicit left 9995):   reduce exp --> exp 'OR' exp
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'MINUSEQUAL' (explicit left 9995):   reduce exp --> exp 'OR' exp
     action 'POWEREQUAL' (explicit left 9995):   reduce exp --> exp 'OR' exp
@@ -5218,7 +5958,7 @@ state 91:
   immediate action: <none>
  gotos:
 
-state 92:
+state 103:
   items:
     exp -> exp . 'NOTEQ' exp
     exp -> exp . 'PLUS' exp
@@ -5246,29 +5986,30 @@ state 92:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
     action 'LPAR' (noprec):   error
-    action 'RPAR' (noprec):   shift 107
+    action 'RPAR' (noprec):   shift 118
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
     action 'COMMA' (noprec):   error
-    action 'OR' (explicit left 9995):   shift 105
-    action 'AND' (explicit left 9996):   shift 104
-    action 'PLUS' (explicit left 9998):   shift 94
-    action 'MINUS' (explicit left 9998):   shift 95
-    action 'TIMES' (explicit left 9999):   shift 96
-    action 'DIVIDE' (explicit left 9999):   shift 97
-    action 'MOD' (explicit left 9999):   shift 98
-    action 'LESS' (explicit left 9997):   shift 102
-    action 'GREATER' (explicit left 9997):   shift 103
-    action 'EQUAL' (explicit left 9997):   shift 101
+    action 'OR' (explicit left 9995):   shift 116
+    action 'AND' (explicit left 9996):   shift 115
+    action 'PLUS' (explicit left 9998):   shift 105
+    action 'MINUS' (explicit left 9998):   shift 106
+    action 'TIMES' (explicit left 9999):   shift 107
+    action 'DIVIDE' (explicit left 9999):   shift 108
+    action 'MOD' (explicit left 9999):   shift 109
+    action 'LESS' (explicit left 9997):   shift 113
+    action 'GREATER' (explicit left 9997):   shift 114
+    action 'EQUAL' (explicit left 9997):   shift 112
     action 'NOT' (noprec):   error
-    action 'LEQ' (explicit left 9997):   shift 99
-    action 'GEQ' (explicit left 9997):   shift 100
-    action 'NOTEQ' (explicit left 9997):   shift 93
+    action 'LEQ' (explicit left 9997):   shift 110
+    action 'GEQ' (explicit left 9997):   shift 111
+    action 'NOTEQ' (explicit left 9997):   shift 104
     action 'PLUSEQUAL' (noprec):   error
     action 'MINUSEQUAL' (noprec):   error
     action 'POWEREQUAL' (noprec):   error
@@ -5283,7 +6024,7 @@ state 92:
   immediate action: <none>
  gotos:
 
-state 93:
+state 104:
   items:
     exp -> exp 'NOTEQ' . exp
 
@@ -5298,11 +6039,12 @@ state 93:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5317,7 +6059,7 @@ state 93:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5326,17 +6068,17 @@ state 93:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 79
+    goto exp: 90
 
-state 94:
+state 105:
   items:
     exp -> exp 'PLUS' . exp
 
@@ -5351,11 +6093,12 @@ state 94:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5370,7 +6113,7 @@ state 94:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5379,17 +6122,17 @@ state 94:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 80
+    goto exp: 91
 
-state 95:
+state 106:
   items:
     exp -> exp 'MINUS' . exp
 
@@ -5404,11 +6147,12 @@ state 95:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5423,7 +6167,7 @@ state 95:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5432,17 +6176,17 @@ state 95:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 81
+    goto exp: 92
 
-state 96:
+state 107:
   items:
     exp -> exp 'TIMES' . exp
 
@@ -5457,11 +6201,12 @@ state 96:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5476,7 +6221,7 @@ state 96:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5485,17 +6230,17 @@ state 96:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 82
+    goto exp: 93
 
-state 97:
+state 108:
   items:
     exp -> exp 'DIVIDE' . exp
 
@@ -5510,11 +6255,12 @@ state 97:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5529,7 +6275,7 @@ state 97:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5538,17 +6284,17 @@ state 97:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 83
+    goto exp: 94
 
-state 98:
+state 109:
   items:
     exp -> exp 'MOD' . exp
 
@@ -5563,11 +6309,12 @@ state 98:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5582,7 +6329,7 @@ state 98:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5591,17 +6338,17 @@ state 98:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 84
+    goto exp: 95
 
-state 99:
+state 110:
   items:
     exp -> exp 'LEQ' . exp
 
@@ -5616,11 +6363,12 @@ state 99:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5635,7 +6383,7 @@ state 99:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5644,17 +6392,17 @@ state 99:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 85
+    goto exp: 96
 
-state 100:
+state 111:
   items:
     exp -> exp 'GEQ' . exp
 
@@ -5669,11 +6417,12 @@ state 100:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5688,7 +6437,7 @@ state 100:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5697,17 +6446,17 @@ state 100:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 86
+    goto exp: 97
 
-state 101:
+state 112:
   items:
     exp -> exp 'EQUAL' . exp
 
@@ -5722,11 +6471,12 @@ state 101:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5741,7 +6491,7 @@ state 101:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5750,17 +6500,17 @@ state 101:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 87
+    goto exp: 98
 
-state 102:
+state 113:
   items:
     exp -> exp 'LESS' . exp
 
@@ -5775,11 +6525,12 @@ state 102:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5794,7 +6545,7 @@ state 102:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5803,17 +6554,17 @@ state 102:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 88
+    goto exp: 99
 
-state 103:
+state 114:
   items:
     exp -> exp 'GREATER' . exp
 
@@ -5828,11 +6579,12 @@ state 103:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5847,7 +6599,7 @@ state 103:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5856,17 +6608,17 @@ state 103:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 89
+    goto exp: 100
 
-state 104:
+state 115:
   items:
     exp -> exp 'AND' . exp
 
@@ -5881,11 +6633,12 @@ state 104:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5900,7 +6653,7 @@ state 104:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5909,17 +6662,17 @@ state 104:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 90
+    goto exp: 101
 
-state 105:
+state 116:
   items:
     exp -> exp 'OR' . exp
 
@@ -5934,11 +6687,12 @@ state 105:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -5953,7 +6707,7 @@ state 105:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -5962,17 +6716,17 @@ state 105:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 91
+    goto exp: 102
 
-state 106:
+state 117:
   items:
     exp -> 'LPAR' . exp 'RPAR'
 
@@ -5987,11 +6741,12 @@ state 106:
     action 'FROM' (noprec):   error
     action 'LOOP' (noprec):   error
     action 'UNTIL' (noprec):   error
+    action 'DO' (noprec):   error
     action 'IF' (noprec):   error
     action 'THEN' (noprec):   error
     action 'ELSE' (noprec):   error
     action 'FI' (noprec):   error
-    action 'LPAR' (noprec):   shift 106
+    action 'LPAR' (noprec):   shift 117
     action 'RPAR' (noprec):   error
     action 'LBRACKET' (noprec):   error
     action 'RBRACKET' (noprec):   error
@@ -6006,7 +6761,7 @@ state 106:
     action 'LESS' (noprec):   error
     action 'GREATER' (noprec):   error
     action 'EQUAL' (noprec):   error
-    action 'NOT' (explicit right 10000):   shift 77
+    action 'NOT' (explicit right 10000):   shift 88
     action 'LEQ' (noprec):   error
     action 'GEQ' (noprec):   error
     action 'NOTEQ' (noprec):   error
@@ -6015,17 +6770,17 @@ state 106:
     action 'POWEREQUAL' (noprec):   error
     action 'SWITCH' (noprec):   error
     action 'TYPEINT' (noprec):   error
-    action 'INT' (noprec):   shift 72
-    action 'ID' (noprec):   shift 73
+    action 'INT' (noprec):   shift 83
+    action 'ID' (noprec):   shift 84
     action 'error' (noprec):   error
     action '#' (noprec):   error
     action '$$' (noprec):   error
 
   immediate action: <none>
  gotos:
-    goto exp: 92
+    goto exp: 103
 
-state 107:
+state 118:
   items:
     exp -> 'LPAR' exp 'RPAR' . 
 
@@ -6040,6 +6795,7 @@ state 107:
     action 'FROM' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
     action 'LOOP' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
     action 'UNTIL' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
+    action 'DO' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
     action 'IF' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
     action 'THEN' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'
     action 'ELSE' (noprec):   reduce exp --> 'LPAR' exp 'RPAR'

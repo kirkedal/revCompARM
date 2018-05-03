@@ -71,11 +71,11 @@ let rec evalExp (e) =
   | And (e1, e2) ->
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
-      ( res1 + " & " + res2 )
+      ( res1 + " && " + res2 )
   | Or (e1, e2) ->
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
-      ( res1 + " | " + res2 )
+      ( res1 + " || " + res2 )
   | Par (e1) ->
       let res1 = evalExp(e1)
       ( "( " + res1 + " )" )
@@ -153,13 +153,15 @@ and evalStmt (e, forward) =
           evalExp(e1)
 
       let assert1 = "\nassert(" + com2 + ");\n"
-      let assert2 = "\nassert(!(" + com2 + "));\n"
       let ifpart = res1 + assert1
-      let elsepart = res2 + assert2
-      output <- output + com1 + ") {\n" + ifpart + "} else {\n" + elsepart + "}"
+      output <- output + com1 + ") {\n" + ifpart + "}"
+      if (not (res1.Equals(res2))) then
+        let assert2 = "\nassert(!(" + com2 + "));\n"
+        let elsepart = res2 + assert2
+        output <- output + " else {\n" + elsepart + "}"
       output
 
-  | From (e1, s, e2) ->
+  | From (e1, s1, s2, e2, n) ->
       let mutable output = ""
       let resExp1 =
         if forward then
@@ -173,13 +175,28 @@ and evalStmt (e, forward) =
           evalExp(e1)
       let res1 =
         if forward then
-          evalStmt(s, forward)
+          evalStmt(s1, forward)
         else
-          evalStmt(s, false)
-      output <- output + "assert(" + resExp1 + ");\n"
-      output <- output + "while(!(" + resExp2 + ")) {\n"
-      output <- output + res1
-      output <- output + "\nassert(!(" + resExp1 + "));\n}"
+          evalStmt(s1, false)
+      let res2 =
+        if forward then
+          evalStmt(s2, forward)
+        else
+          evalStmt(s2, false)
+      if ((n = 1) || (n = 3)) then
+        output <- output + "assert(" + resExp1 + ");\n"
+        output <- output + res1 + "\n"
+      output <- output + "while(!(" + resExp2 + ")) {"
+      if ((n = 2) || (n = 3)) then
+        output <- output + "\n" + res2
+        output <- output + "\nassert(!(" + resExp1 + "));\n"
+      if ((n = 1) || (n = 3)) then
+        if n = 1 then
+          output <- output + "\nassert(!(" + resExp1 + "));\n"
+        output <- output + res1
+      //output <- output + "\nassert(!(" + resExp1 + "));\n}"
+      //output <- output + "assert(" + resExp1 + ");\n"
+      output <- output + "\n}"
       output
 
   | Local (dv1, e1, s, dv2, e2) ->

@@ -7,9 +7,15 @@ procedure main()
 
 procedure fib(int n)
     local int i = 0
-    from n = 0 loop
+    from n = 0 do
     i += 1
     n += 2
     until i = 10
     i -= 10
     delocal int i = 0
+
+procedure test(int oneTry)
+    oneTry += 2
+    if oneTry = 4 then
+      oneTry -= 1
+    fi oneTry = 3

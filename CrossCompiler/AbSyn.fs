@@ -44,7 +44,7 @@ type Stmt =
   | Call    of Proc
   | Uncall  of Proc
   | If      of Exp * Stmt * Stmt * Exp
-  | From    of Exp * Stmt * Exp
+  | From    of Exp * Stmt * Stmt * Exp * int
   | VarApp  of Exp * Op_r
   | Local   of Defvar * Exp * Stmt * Defvar * Exp
   | Stmts   of Stmt * Stmt
