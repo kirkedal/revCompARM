@@ -10,6 +10,8 @@ open AbSyn
 
 let ProcTable = new Dictionary<string, AbSyn.Def>()
 
+let mutable LibSetting = false
+
 let rec evalExp (e) =
   match e with
   | Const (v) ->
@@ -326,27 +328,30 @@ and evalMain (e) =
           output <- output + "\n"
       ( output + "\n" + res1 + "\nreturn 0;\n}")
 
-and evalProg (e) =
+and evalProg (e, header) =
   match e with
   | Program (defList1, dm, defList2) ->
       let mutable ret = ""
       let input = defList1 @ defList2
       //Setup Includes
-      let pre = "#include <stdio.h>\n" +
-                "#include <assert.h>\n" +
-                "#include <iostream>\n" +
-                "using namespace std;\n" +
-                "\n\n"
+      let pre =
+        "#include <stdio.h>\n" +
+        "#include <assert.h>\n"
+      let pre2 =
+        "#include <iostream>\n" +
+        "using namespace std;\n" +
+        "\n\n"
       let addProc =
         let mutable output = ""
         for p in input do
           match p with
           | Define (str, dvList, _) ->
-              if ProcTable.ContainsKey(str) then
-                printfn "Procdure [%s] defined more than 1 time" str
-                exit 1;
-              else
-                ProcTable.Add(str, p)
+              if not header then
+                if ProcTable.ContainsKey(str) then
+                  printfn "Procdure [%s] defined more than 1 time" str
+                  exit 1;
+                else
+                  ProcTable.Add(str, p)
               let fwd = "void " + str + "_forward("
               let bwd = "void " + str + "_backwards("
               let param = makeParams(dvList)
@@ -359,7 +364,13 @@ and evalProg (e) =
           output <- output + evalDef(body, false) + "\n\n"
         output
       let addMain = evalMain(dm)
-      ret <- ret + pre + addProc + addProcBody + addMain
+      if LibSetting then
+        if header then
+          ret <- pre + addProc
+        else
+          ret <- pre + addProcBody
+      else
+        ret <- pre + pre2 + addProc + addProcBody + addMain
       ret
 
 and makeParams (dvList) =
@@ -402,17 +413,33 @@ let parseFile (filename : string)=
 let translate (filename : string) =
     let pgm = parseFile filename
     printfn "%A\n\n" pgm
-    let res = evalProg(pgm)
+    let res = evalProg(pgm, false)
     printfn "%s" res
     let outputLength = filename.Length - 6
     let newName = filename.Remove(outputLength)
     File.WriteAllText(newName + ".cpp", res)
+    if LibSetting then
+      let resHead = evalProg(pgm, LibSetting)
+      File.WriteAllText(newName + ".hpp", resHead)
     pgm
 
 [<EntryPoint>]
 let main (paramList: string[]) =
-    match paramList with
+    printfn "%A" paramList
+    for param in paramList do
+      match param with
+      | "-lib"  ->
+          LibSetting <- true
+      | _       ->
+          if param.EndsWith(".janus") then
+            translate(param)
+            printfn "Translation Succesfull: %s" param
+          else
+            printfn "Expected a file with .janus extension, got %s" param
+    printfn "%A" LibSetting
+    0
+    (*match paramList with
       | [|file|]  ->  translate (file)
                       0
       | _         ->  printfn "No or Bad Input"
-                      1
+                      1*)
