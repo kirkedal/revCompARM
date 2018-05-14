@@ -5,7 +5,7 @@ type Type =
   | Array   of Type
 
 type Value =
-  | IntVal   of int
+  | IntVal   of int64
   | ArrayVal of Value list * Type
 
 type Exp =
@@ -21,6 +21,9 @@ type Exp =
   | NotEq   of Exp * Exp
   | Times   of Exp * Exp
   | Divide  of Exp * Exp
+  | Xor     of Exp * Exp
+  | BAnd    of Exp * Exp
+  | BOr     of Exp * Exp
   | Mod     of Exp * Exp
   | Geq     of Exp * Exp
   | Leq     of Exp * Exp
@@ -45,6 +48,7 @@ type Stmt =
   | Uncall  of Proc
   | If      of Exp * Stmt * Stmt * Exp
   | From    of Exp * Stmt * Stmt * Exp * int
+  | Iter    of Defvar * Exp * Exp * Exp * Stmt
   | VarApp  of Exp * Op_r
   | Local   of Defvar * Exp * Stmt * Defvar * Exp
   | Stmts   of Stmt * Stmt

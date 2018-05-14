@@ -6,18 +6,20 @@ open AbSyn
 %}
 
 %token <string> ID
-%token <int> INT
+%token <int64> INT
 
 %token TYPEINT
 
 %token PLUSEQUAL MINUSEQUAL POWEREQUAL SWITCH
 %token LEQ GEQ NOTEQ
 %token LESS GREATER EQUAL NOT
-%token PLUS MINUS TIMES DIVIDE MOD
+%token PLUS MINUS TIMES DIVIDE MOD XOR
 %token OR AND
+%token BAND BOR
 %token LPAR RPAR LBRACKET RBRACKET COMMA
 %token IF THEN ELSE FI
 %token FROM LOOP UNTIL DO
+%token ITERATE BY TO END
 %token CALL UNCALL
 %token PROC MAIN
 %token LOCAL DELOCAL
@@ -26,6 +28,9 @@ open AbSyn
 %right PLUSEQUAL MINUSEQUAL POWEREQUAL
 %left OR
 %left AND
+%left BOR
+%left XOR
+%left BAND
 %left LEQ GEQ NOTEQ LESS GREATER EQUAL
 %left MINUS PLUS
 %left TIMES DIVIDE MOD
@@ -78,7 +83,7 @@ defs:
 defvar:
     type ID                               { Dvar ($1, $2) }
   | type ID LBRACKET exp RBRACKET         { Array ($1, $2, $4) }
-  | type ID LBRACKET RBRACKET             { Array ($1, $2, Const ( IntVal (-1))) }
+  | type ID LBRACKET RBRACKET             { Array ($1, $2, Const ( IntVal (int64 0))) }
 
 defvars:
     defvar COMMA defvars                  { $1 :: $3 }
@@ -97,6 +102,10 @@ stmt:
   | FROM exp DO stmt UNTIL exp            { From ($2, $4, $4, $6, 1) }
   | FROM exp LOOP stmt UNTIL exp          { From ($2, $4, $4, $6, 2) }
   | FROM exp DO stmt LOOP stmt UNTIL exp  { From ($2, $4, $6, $8, 3) }
+  | ITERATE defvar EQUAL exp TO exp stmt END
+                                          { Iter ($2, $4, Const ( IntVal (int64 1)),  $6, $7) }
+  | ITERATE defvar EQUAL exp BY exp TO exp stmt END
+                                          { Iter ($2, $4, $6, $8, $9) }
   | exp opr                               { VarApp ($1 , $2) }
   | LOCAL defvar EQUAL exp stmt DELOCAL defvar EQUAL exp
                                           { Local ($2, $4, $5, $7, $9) }
@@ -112,6 +121,9 @@ exp:
   | exp MINUS exp                         { Minus ($1, $3) }
   | exp TIMES exp                         { Times ($1, $3) }
   | exp DIVIDE exp                        { Divide ($1, $3) }
+  | exp XOR exp                           { Xor ($1, $3) }
+  | exp BAND exp                          { BAnd ($1, $3) }
+  | exp BOR exp                           { BOr ($1, $3) }
   | exp MOD exp                           { Mod ($1, $3) }
   | exp LEQ exp                           { Leq ($1, $3) }
   | exp GEQ exp                           { Geq ($1, $3) }

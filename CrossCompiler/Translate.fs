@@ -44,6 +44,18 @@ let rec evalExp (e) =
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
       ( res1 + " / " + res2 )
+  | Xor (e1, e2) ->
+      let res1 = evalExp(e1)
+      let res2 = evalExp(e2)
+      ( res1 + " ^ " + res2 )
+  | BAnd (e1, e2) ->
+      let res1 = evalExp(e1)
+      let res2 = evalExp(e2)
+      ( res1 + " & " + res2 )
+  | BOr (e1, e2) ->
+      let res1 = evalExp(e1)
+      let res2 = evalExp(e2)
+      ( res1 + " | " + res2 )
   | Mod (e1, e2) ->
       let res1 = evalExp(e1)
       let res2 = evalExp(e2)
@@ -195,6 +207,37 @@ and evalStmt (e, forward) =
           output <- output + "\nassert(!(" + resExp1 + "));\n"
         output <- output + res1
       output <- output + "\n}"
+      output
+
+  | Iter (dv, e1, e2, e3, s) ->
+      let mutable output = ""
+      let resDv =
+        match dv with
+        | Dvar (_, str) ->
+            str
+      let resExp1 = evalExp(e1)
+      let resExp2 = evalExp(e2)
+      let resExp3 = evalExp(e3)
+      let resS = evalStmt(s, forward)
+      // Create Head of for loop
+      let head1 =
+        if forward then
+          "int " + resDv + " = " + resExp1
+        else
+          "int " + resDv + " = " + resExp3
+      let head2 =
+        if forward then
+          resDv + " != " + resExp3 + " + " + resExp2
+        else
+          resDv + " != " + resExp1 + " + 0 - " + resExp2
+      let head3 =
+        if forward then
+           resDv + " += " + resExp2
+        else
+         resDv + " += 0 - " + resExp2
+      let headBody =
+        "for (" + head1 + " ; " + head2 + " ; " + head3 + ")\n"
+      output <- headBody + "{\n" + resS + "\n}"
       output
 
   | Local (dv1, e1, s, dv2, e2) ->

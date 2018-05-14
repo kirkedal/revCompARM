@@ -1,9 +1,16 @@
-procedure encode(int text, int arc)
-    from text = 50 do
-        text -= 1
-        arc += text
-    until text = 0
-
+procedure TEA_encipher(int data[], int key[])
+    local int delta = 2654435769
+    local int sum = 0
+    local int i = 0
+    from i = 0 loop
+        sum += delta
+        data[0] += ((data[1] * 16) + key[0]) ^ (data[1] + sum) ^ ((data[1] / 32) + key[1])
+        data[1] += ((data[0] * 16) + key[2]) ^ (data[0] + sum) ^ ((data[0] / 32) + key[3])
+        i += 1
+    until i = 32
+    delocal int i = 32
+    delocal int sum = 32*delta
+    delocal int delta = 2654435769
 
 procedure main()
     int text
@@ -12,3 +19,15 @@ procedure main()
     text += 50
 
     call encode(text, arc)
+    cout << data[0] << ", " << data[1] << "\n";
+    TEA_encipher_forward(data, key);
+    cout << data[0] << ", " << data[1] << "\n";
+    TEA_encipher_backwards(data, key);
+    cout << data[0] << ", " << data[1] << "\n";
+    XTEA_encipher_forward(num_rounds, data, key);
+    cout << data[0] << ", " << data[1] << "\n";
+    XTEA_encipher_backwards(num_rounds, data, key);
+    cout << more_data[0] << ", " << more_data[1] << ", " << more_data[2] << ", " << more_data[3] << "\n";
+    XXTEA_encipher_forward(more_data, key);
+    cout << more_data[0] << ", " << more_data[1] << ", " << more_data[2] << ", " << more_data[3] << "\n";
+    XXTEA_encipher_backwards(more_data, key);

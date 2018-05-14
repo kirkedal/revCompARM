@@ -24,6 +24,10 @@ let keywords (s) =
        | "loop"         -> Parser.LOOP
        | "do"           -> Parser.DO
        | "until"        -> Parser.UNTIL
+       | "iterate"      -> Parser.ITERATE
+       | "to"           -> Parser.TO
+       | "by"           -> Parser.BY
+       | "end"          -> Parser.END
        | "local"        -> Parser.LOCAL
        | "delocal"      -> Parser.DELOCAL
        | _              -> Parser.ID (s)
@@ -34,9 +38,12 @@ let op (s) =
       | "-"             -> Parser.MINUS
       | "*"             -> Parser.TIMES
       | "/"             -> Parser.DIVIDE
+      | "^"             -> Parser.XOR
+      | "|"             -> Parser.BOR
+      | "&"             -> Parser.BAND
       | "%"             -> Parser.MOD
-      | "||"             -> Parser.OR
-      | "&&"             -> Parser.AND
+      | "||"            -> Parser.OR
+      | "&&"            -> Parser.AND
       | "!"             -> Parser.NOT
       | "<"             -> Parser.LESS
       | ">"             -> Parser.GREATER
@@ -68,7 +75,7 @@ rule tokenize = parse
   | opReg           { op (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
   | mainReg         { mainDef (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
   | idReg           { keywords (Encoding.UTF8.GetString(lexbuf.Lexeme)) }
-  | num             { Parser.INT( int (Encoding.UTF8.GetString(lexbuf.Lexeme))) }
+  | num             { Parser.INT( int64 (Encoding.UTF8.GetString(lexbuf.Lexeme))) }
   | '('             { Parser.LPAR }
   | ')'             { Parser.RPAR }
   | '['             { Parser.LBRACKET }
