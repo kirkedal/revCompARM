@@ -45,16 +45,13 @@ open AbSyn
 %type <AbSyn.Def list> defs
 %type <AbSyn.Stmt> stmt
 %type <AbSyn.Exp> exp
+%type <AbSyn.Exp list> exps
 %type <AbSyn.Op_r> opr
 %type <AbSyn.Defvar> defvar
 %type <AbSyn.Defvar list> defvars
 %type <AbSyn.Type> type
-%type <string list> ids
 
 %%
-ids:
-    ID COMMA ids                          { $1 :: $3 }
-  | ID                                    { $1 :: [] }
 
 opr:
     PLUSEQUAL exp                         { PlusE ($2) }
@@ -82,9 +79,12 @@ defs:
 
 defvar:
     type ID                               { Dvar ($1, $2) }
-  | type ID LBRACKET exp RBRACKET         { Array ($1, $2, $4) }
-  | type ID LBRACKET RBRACKET             { Array ($1, $2, Const ( IntVal (int64 0))) }
-
+  | type ID LBRACKET exp RBRACKET         { Array ($1, $2, $4, $4, 1) }
+  | type ID LBRACKET RBRACKET             { Array ($1, $2, Const ( IntVal (int64 0)), Const ( IntVal (int64 0)), 1) }
+  | type ID LBRACKET exp RBRACKET LBRACKET exp RBRACKET
+                                          { Array ($1, $2, $4, $7, 2) }
+  | type ID LBRACKET RBRACKET LBRACKET RBRACKET
+                                          { Array ($1, $2, Const ( IntVal (int64 0)), Const ( IntVal (int64 0)), 2) }
 defvars:
     defvar COMMA defvars                  { $1 :: $3 }
   | defvar defvars                        { $1 :: $2 }
@@ -92,7 +92,7 @@ defvars:
 
 
 proc:
-    ID LPAR ids RPAR                      { Procedure ($1, $3) }
+    ID LPAR exps RPAR                      { Procedure ($1, $3) }
 
 stmt:
     CALL proc                             { Call ($2) }
@@ -113,8 +113,11 @@ stmt:
 
 exp:
     INT                                   { Const ( IntVal ($1)) }
+  | MINUS INT                             { Const ( IntVal (- $2))}
   | ID                                    { Var ($1) }
-  | ID LBRACKET exp RBRACKET              { Index ($1, $3) }
+  | ID LBRACKET exp RBRACKET              { Index ($1, $3, $3, 1) }
+  | ID LBRACKET exp RBRACKET LBRACKET exp RBRACKET
+                                          { Index ($1, $3, $6, 2) }
   | NOT exp                               { Not ($2) }
   | exp NOTEQ exp                         { NotEq ($1, $3) }
   | exp PLUS exp                          { Plus ($1, $3) }
@@ -133,5 +136,9 @@ exp:
   | exp AND exp                           { And ($1, $3) }
   | exp OR exp                            { Or ($1, $3) }
   | LPAR exp RPAR                         { Par ($2) }
+
+exps:
+    exp COMMA exps                        { $1 :: $3 }
+  | exp                                   { $1 :: [] }
 
 %%

@@ -1,0 +1,70 @@
+procedure crout(int LDU[], int n)
+  iterate int j = 0 to n-1
+    iterate int i = j to n-1
+      iterate int k = 0 to j-1
+        if k = j
+        then
+          LDU[i*n + j] -= LDU[i*n + k]
+        else
+          LDU[i*n + j] -= LDU[i*n + k] * LDU[k*n + j]
+        fi k = j
+      end
+    end
+
+    iterate int i = j + 1 to n-1
+      iterate int k = 0 to j-1
+        if k = i
+        then
+          LDU[j*n + j] -= LDU[j*n + k]
+        else
+          LDU[j*n + i] -= LDU[j*n + k] * LDU[k*n + i]
+        fi k = j
+      end
+      uncall mult(LDU[j*n + i], LDU[j*n + j])
+    end
+  end
+
+procedure multLD(int A[], int LDU[], int n)
+  iterate int i = 0 to n-1
+    iterate int j = 0 to n-1
+      call mult(A[j*n + i], LDU[i*n + i])
+      iterate int k = i+1 to n-1
+        A[j*n + i] += LDU[k*n + i] * A[j*n + k]
+      end
+    end
+  end
+
+procedure multU(int A[], int LDU[], int n)
+  iterate int i = n-1 by -1 to 0
+    iterate int j = 0 to n-1
+      iterate int k = 0 to i-1
+        A[j*n + i] += LDU[k*n + i] * A[j*n + k]
+      end
+    end
+  end
+
+procedure mult (int x, int y)
+  local int t = x
+    x += t * y - t
+  delocal int t = x / y
+
+procedure main()
+  int B[9]
+  int A[9]
+  int n
+  n += 3
+
+  B[0] ^= 2 B[3] ^= 4 B[6] ^= 2
+  B[1] ^= 4 B[4] ^= 1 B[7] ^= 3
+  B[2] ^= 4 B[5] ^= 1 B[8] ^= 4
+
+  A[0] ^= 3 A[3] ^= 1 A[6] ^= 4
+  A[1] ^= 2 A[4] ^= 2 A[7] ^= 3
+  A[2] ^= 4 A[5] ^= 1 A[8] ^= 1
+
+  uncall crout(B, n)
+  iterate int i = 1 to 1
+    call multLD(A, B, n)
+    call multU(A, B, n)
+  end
+  call crout(B, n)

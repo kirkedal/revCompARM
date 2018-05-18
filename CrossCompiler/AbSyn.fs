@@ -11,7 +11,7 @@ type Value =
 type Exp =
   | Const   of Value
   | Var     of string
-  | Index   of string * Exp
+  | Index   of string * Exp * Exp * int
   | And     of Exp * Exp
   | Or      of Exp * Exp
   | Not     of Exp
@@ -33,7 +33,7 @@ type Exp =
 
 type Defvar =
     Dvar    of Type * string
-  | Array   of Type * string * Exp
+  | Array   of Type * string * Exp * Exp * int
 
 type Op_r =
   | PlusE   of Exp
@@ -41,7 +41,7 @@ type Op_r =
   | PowerE  of Exp
   | Switch  of Exp
 
-type Proc = Procedure of string * string list
+type Proc = Procedure of string * Exp list
 
 type Stmt =
   | Call    of Proc

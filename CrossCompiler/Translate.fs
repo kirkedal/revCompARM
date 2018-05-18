@@ -20,9 +20,13 @@ let rec evalExp (e) =
           ((string) i)
   | Var (str) ->
       str
-  | Index (str, e1) ->
-      let res1 = evalExp(e1)
-      ( str + "[" + res1 + "]" )
+  | Index (str, e1, e2, dimension) ->
+      let resExp1 = evalExp(e1)
+      let resExp2 = evalExp(e2)
+      if dimension < 2 then
+        ( str + "[" + resExp1 + "]" )
+      else
+        ( str + "[" + resExp1 + "]" + "[" + resExp2 + "]" )
   | Not (e1) ->
       let res1 = evalExp(e1)
       ( "!" + res1 )
@@ -220,13 +224,14 @@ and evalStmt (e, forward) =
       let resExp1 = evalExp(e1)
       let resExp2 = evalExp(e2)
       let resExp3 = evalExp(e3)
+      printfn "%s" resExp2
       let resS = evalStmt(s, forward)
       // Create Head of for loop
       let head1 =
         if forward then
-          "int " + resDv + " = " + resExp1
+          "long " + resDv + " = " + resExp1
         else
-          "int " + resDv + " = " + resExp3
+          "long " + resDv + " = " + resExp3
       let head2 =
         if forward then
           resDv + " != " + resExp3 + " + " + resExp2
@@ -243,7 +248,7 @@ and evalStmt (e, forward) =
       output
 
   | Local (dv1, e1, s, dv2, e2) ->
-      let mutable output = "int "
+      let mutable output = "long "
       let resExp1 =
         if forward then
           evalExp(e1)
@@ -274,31 +279,44 @@ and evalStmt (e, forward) =
 and evalDefvar (e, param) =
   match e with
   | Dvar (t, str) ->
-      let resType = ((string) t).ToLower()
+      let resType = "long "
       if param then
         ( resType + " &" + str )
       else
         ( resType + " " + str + " = 0" )
-  | Array (t, str, e1) ->
-      let resType = ((string) t).ToLower()
-      let res = evalExp(e1)
+  | Array (t, str, e1, e2, length) ->
+      let mutable output = ""
+      let resType = "long "
+      let resExp1 = evalExp(e1)
+      let resExp2 = evalExp(e2)
       if param then
-        ( resType + " *" + str )
+        let pointerNumber =
+          if length < 2 then
+            (" *")
+          else
+            (" **")
+        output <- ( resType + pointerNumber + str )
       else
-        ( resType + " " + str + "[" + res + "] = {0}" )
+        let dimension =
+          if length < 2 then
+            ("[" + resExp1 + "]")
+          else
+            ("[" + resExp1 + "]" + "[" + resExp2 + "]")
+        output <- ( resType + " " + str + dimension + " = {0}" )
+      output
 
 and evalProc (e, forward) =
   match e with
-  | Procedure (str, strList) ->
+  | Procedure (str, expList) ->
       let mutable direction = ""
       let mutable param = "("
       if forward then
         direction <- "_forward"
       else
         direction <- "_backwards"
-      for i = 0 to strList.Length - 1 do
-        param <- param + strList.[i]
-        if i < strList.Length-1 then
+      for i = 0 to expList.Length - 1 do
+        param <- param + evalExp(expList.[i])
+        if i < expList.Length-1 then
           param <- param + ", "
         else
           param <- param + ")"

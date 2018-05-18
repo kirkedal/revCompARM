@@ -18,16 +18,27 @@ procedure main()
 
     text += 50
 
-    call encode(text, arc)
-    cout << data[0] << ", " << data[1] << "\n";
-    TEA_encipher_forward(data, key);
-    cout << data[0] << ", " << data[1] << "\n";
-    TEA_encipher_backwards(data, key);
-    cout << data[0] << ", " << data[1] << "\n";
-    XTEA_encipher_forward(num_rounds, data, key);
-    cout << data[0] << ", " << data[1] << "\n";
-    XTEA_encipher_backwards(num_rounds, data, key);
-    cout << more_data[0] << ", " << more_data[1] << ", " << more_data[2] << ", " << more_data[3] << "\n";
-    XXTEA_encipher_forward(more_data, key);
-    cout << more_data[0] << ", " << more_data[1] << ", " << more_data[2] << ", " << more_data[3] << "\n";
-    XXTEA_encipher_backwards(more_data, key);
+    cout << B << "\n";
+    crout_backwards(B, n);
+    cout << B << "\n";
+    for (long i = 1 ; i != 1 + 1 ; i += 1)
+    {
+    multLD_forward(A, B, n);
+    cout << A << "\n";
+    multU_forward(A, B, n);
+    cout << A << "\n";
+    }
+    cout << B << "\n";
+    crout_forward(B, n);
+    cout << B << "\n";
+
+    // template
+
+    cout << "B=\n";
+    for (int i = 0; i < 9; i++){
+      cout << B[i] << ", ";
+      if (i % 3 = 0) {
+      cout << "\n";
+      }
+    }
+    cout << "\n";
