@@ -11,6 +11,7 @@ open AbSyn
 let ProcTable = new Dictionary<string, AbSyn.Def>()
 
 let mutable LibSetting = false
+let mutable AssertSetting = false
 
 let rec evalExp (e) =
   match e with
@@ -123,7 +124,6 @@ and evalOpR (e, var, forward) =
       ( fst + ";\n" + snd + ";\n" + fst )
 
 and evalStmt (e, forward) =
-  //printfn "%A" e
   match e with
   | Stmts (s1, s2) ->
       let res1 = evalStmt(s1, forward)
@@ -171,11 +171,19 @@ and evalStmt (e, forward) =
           evalExp(e1)
 
       let assert1 = "\nassert(" + com2 + ");\n"
-      let ifpart = res1 + assert1
+      let ifpart =
+        if not AssertSetting then
+          res1 + assert1
+        else
+          res1
       output <- output + com1 + ") {\n" + ifpart + "}"
       if (not (res1.Equals(res2))) then
         let assert2 = "\nassert(!(" + com2 + "));\n"
-        let elsepart = res2 + assert2
+        let elsepart =
+          if not AssertSetting then
+            res2 + assert2
+          else
+            res2
         output <- output + " else {\n" + elsepart + "}"
       output
 
@@ -202,15 +210,18 @@ and evalStmt (e, forward) =
         else
           evalStmt(s2, false)
       if ((n = 1) || (n = 3)) then
-        output <- output + "assert(" + resExp1 + ");\n"
+        if not AssertSetting then
+          output <- output + "assert(" + resExp1 + ");\n"
         output <- output + res1 + "\n"
       output <- output + "while(!(" + resExp2 + ")) {"
       if ((n = 2) || (n = 3)) then
         output <- output + "\n" + res2
-        output <- output + "\nassert(!(" + resExp1 + "));\n"
+        if not AssertSetting then
+          output <- output + "\nassert(!(" + resExp1 + "));\n"
       if ((n = 1) || (n = 3)) then
         if n = 1 then
-          output <- output + "\nassert(!(" + resExp1 + "));\n"
+          if not AssertSetting then
+            output <- output + "\nassert(!(" + resExp1 + "));\n"
         output <- output + res1
       output <- output + "\n}"
       output
@@ -267,9 +278,13 @@ and evalStmt (e, forward) =
       match dv1, dv2 with
       | Dvar(_,str1), Dvar(_,str2) ->
               if forward then
-                output <- output + str1 + " = " + resExp1 + ";\n" + res1 + "\nassert(" + str2 + " == " + resExp2 + ");"
+                output <- output + str1 + " = " + resExp1 + ";\n" + res1
+                if not AssertSetting then
+                  output <- output + "\nassert(" + str2 + " == " + resExp2 + ");"
               else
-                output <- output + str2 + " = " + resExp1 + ";\n" + res1 + "\nassert(" + str1 + " == " + resExp2 + ");"
+                output <- output + str2 + " = " + resExp1 + ";\n" + res1
+                if not AssertSetting then
+                  output <- output + "\nassert(" + str1 + " == " + resExp2 + ");"
       output
 
   | VarApp (e1, opr) ->
@@ -386,7 +401,7 @@ and evalProg (e, header) =
         if header then
           ret <- pre + addProc
         else
-          ret <- pre + addProcBody
+          ret <- pre + addProc + addProcBody
       else
         ret <- pre + pre2 + addProc + addProcBody + addMain
       ret
@@ -430,9 +445,7 @@ let parseFile (filename : string)=
 
 let translate (filename : string) =
     let pgm = parseFile filename
-    printfn "%A\n\n" pgm
     let res = evalProg(pgm, false)
-    printfn "%s" res
     let outputLength = filename.Length - 6
     let newName = filename.Remove(outputLength)
     File.WriteAllText(newName + ".cpp", res)
@@ -443,21 +456,16 @@ let translate (filename : string) =
 
 [<EntryPoint>]
 let main (paramList: string[]) =
-    printfn "%A" paramList
     for param in paramList do
       match param with
       | "-lib"  ->
           LibSetting <- true
+      | "-na"   ->
+          AssertSetting <- true
       | _       ->
           if param.EndsWith(".janus") then
             translate(param)
             printfn "Translation Succesfull: %s" param
           else
             printfn "Expected a file with .janus extension, got %s" param
-    printfn "%A" LibSetting
     0
-    (*match paramList with
-      | [|file|]  ->  translate (file)
-                      0
-      | _         ->  printfn "No or Bad Input"
-                      1*)

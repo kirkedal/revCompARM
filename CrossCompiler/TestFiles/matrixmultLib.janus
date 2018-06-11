@@ -62,9 +62,6 @@ procedure main()
   A[1] ^= 2 A[4] ^= 2 A[7] ^= 3
   A[2] ^= 4 A[5] ^= 1 A[8] ^= 1
 
-  uncall crout(B, n)
-  iterate int i = 1 to 1
-    call multLD(A, B, n)
-    call multU(A, B, n)
-  end
   call crout(B, n)
+  call multLD(A, B, n)
+  call multU(A, B, n)
